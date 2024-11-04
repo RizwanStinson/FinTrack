@@ -1,0 +1,81 @@
+{
+  "user": [
+    {
+      "id": "9c55",
+      "userName": "a",
+      "email": "b",
+      "password": "c",
+      "userId": "192a3df9-4ffe-4fca-b304-8cc10217a865"
+    },
+    {
+      "id": "76a9",
+      "userName": "a",
+      "email": "b",
+      "password": "d",
+      "userId": "f5e158ed-e304-46f1-8257-0bf9868b62b8"
+    },
+    {
+      "id": "3c4e",
+      "userName": "a",
+      "email": "o",
+      "password": "d",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    }
+  ],
+  "details": [
+    {
+      "id": "ad56",
+      "type": "expense",
+      "amount": 1000,
+      "category": "Freelance",
+      "date": "2024-11-14T18:00:00.000Z",
+      "description": "Check",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "ac56",
+      "type": "income",
+      "amount": 1200,
+      "category": "Freelance",
+      "date": "2024-11-14T18:00:00.000Z",
+      "description": "Check",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "ab56",
+      "type": "income",
+      "amount": 300,
+      "category": "Freelance",
+      "date": "2024-11-14T18:00:00.000Z",
+      "description": "Check",
+      "userId": "0a67324e-aec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "aa56",
+      "type": "income",
+      "amount": 1200,
+      "category": "Freelance",
+      "date": "2024-12-14T18:00:00.000Z",
+      "description": "Check",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "bfbc",
+      "type": "expense",
+      "amount": 100,
+      "category": "Investment",
+      "date": "2024-11-13T18:00:00.000Z",
+      "description": "Okay",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "2477",
+      "type": "expense",
+      "amount": 100,
+      "category": "Investment",
+      "date": "2024-11-13T18:00:00.000Z",
+      "description": "Okay",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    }
+  ]
+}
