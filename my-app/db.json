@@ -79,9 +79,9 @@
     },
     {
       "id": "fa04",
-      "type": "income",
+      "type": "expense",
       "amount": 58,
-      "category": "Freelance",
+      "category": "Rizwan",
       "date": "2024-11-28T18:00:00.000Z",
       "description": "e",
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
@@ -113,7 +113,7 @@
     },
      {
        "id": "9p0d",
-       "category": "Chicken",
+       "category": "Rizwan",
        "amount": 700,
        "monthYear": "November 2024",
        "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"

@@ -30,3 +30,15 @@ export const deleteTransaction = async (transactionId:string) => {
   );
   return response.data;
 };
+
+
+export const getExpenseTransaction = async () => {
+  const userId = localStorage.getItem("userId");
+  const response = await axios.get(`http://localhost:3001/details`, {
+    params: {
+      userId,
+      type: "expense",
+    },
+  });
+  return response.data;
+};

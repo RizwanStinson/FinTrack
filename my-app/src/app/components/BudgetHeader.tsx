@@ -8,9 +8,16 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { budgetPost } from "../services/budgetService";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, AppDispatch } from "../redux/store";
+import { setCategories, addCategory } from "../redux/slices/categorySlice";
+
 
 export const BudgetHeader = () => {
-    const [categories, setCategories] = useState(["Salary"]);
+  const dispatch = useDispatch<AppDispatch>();
+   const categories = useSelector(
+     (state: RootState) => state.category.categories
+   );
      const [amount, setAmount] = useState("");
     const [category, setCategory] = useState("");
      const [isAddingCategory, setIsAddingCategory] = useState(false);
@@ -22,7 +29,7 @@ const [newCategory, setNewCategory] = useState("");
 
      const handleAddCategory = () => {
        if (newCategory.trim()) {
-         addCategory(newCategory);
+        dispatch(addCategory(newCategory));
          setCategory(newCategory);
          setNewCategory("");
          setIsAddingCategory(false);
@@ -35,14 +42,8 @@ const [newCategory, setNewCategory] = useState("");
           amount: parseFloat(amount),
           monthYear: format(new Date(), "MMMM yyyy"),
         };
-        const response = await budgetPost(budgetData)
+         await budgetPost(budgetData)
      }
-
-       const addCategory = (newCategory: string | null) => {
-         if (newCategory && !categories.includes(newCategory)) {
-           setCategories([...categories, newCategory]);
-         }
-       };
 
      const handleAddTransaction = async () => {
        const response = await getTransaction();
@@ -52,7 +53,7 @@ const [newCategory, setNewCategory] = useState("");
          )
        );
        console.log("Unique: ", uniqueCategory);
-       setCategories(uniqueCategory);
+       dispatch(setCategories(uniqueCategory));
      };
 
   return (
