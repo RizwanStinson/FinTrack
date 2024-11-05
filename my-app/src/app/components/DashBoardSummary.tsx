@@ -10,6 +10,10 @@ interface SummaryCardProps {
   color: string; 
 }
 
+interface DashBoardSummaryProps {
+  transactionUpdated: boolean;
+}
+
 
 
 export function SummaryCard({ title, amount, color }: SummaryCardProps) {
@@ -26,49 +30,45 @@ export function SummaryCard({ title, amount, color }: SummaryCardProps) {
 }
 
 
-function DashBoardSummary() {
+function DashBoardSummary({ transactionUpdated }: DashBoardSummaryProps) {
+  const [totalIncome, setTotalIncome] = useState(0);
+  const [totalExpense, setTotalExpense] = useState(0);
+  const [balance, setBalance] = useState(0);
 
-     const [totalIncome, setTotalIncome] = useState(0);
-     const [totalExpense, setTotalExpense] = useState(0);
-     const [balance, setBalance] = useState(0);
+  useEffect(() => {
+    const fetchTransaction = async () => {
+      const serviceResponse = await getTransaction();
+      console.log("response: ", serviceResponse);
+      const currentDate = new Date();
 
-    useEffect(() => {
-      const fetchTransaction = async () => {
-        const serviceResponse = await getTransaction();
-        console.log("response: ", serviceResponse);
-        const currentDate = new Date();
+      const currentMonthTransactions = serviceResponse.filter((item: any) =>
+        isSameMonth(parseISO(item.date), currentDate)
+      );
 
-         const currentMonthTransactions = serviceResponse.filter((item: any) =>
-           isSameMonth(parseISO(item.date), currentDate)
-         );
+      const incomeTransactions = currentMonthTransactions.filter(
+        (item: Itransaction) => item.type === "income"
+      );
+      const expenseTransactions = currentMonthTransactions.filter(
+        (item: Itransaction) => item.type === "expense"
+      );
 
-          const incomeTransactions = currentMonthTransactions.filter(
-            (item: Itransaction) => item.type === "income"
-          );
-          const expenseTransactions = currentMonthTransactions.filter(
-            (item: Itransaction) => item.type === "expense"
-          );
+      const incomeTotal = incomeTransactions.reduce(
+        (sum: number, item: Itransaction) => sum + item.amount,
+        0
+      );
+      const expenseTotal = expenseTransactions.reduce(
+        (sum: number, item: Itransaction) => sum + item.amount,
+        0
+      );
+      const calculatedBalance = incomeTotal - expenseTotal;
 
-          const incomeTotal = incomeTransactions.reduce(
-            (sum: number, item: Itransaction) => sum + item.amount,
-            0
-          );
-          const expenseTotal = expenseTransactions.reduce(
-            (sum: number, item: Itransaction) => sum + item.amount,
-            0
-          );
-           const calculatedBalance = incomeTotal - expenseTotal;
+      setTotalIncome(incomeTotal);
+      setTotalExpense(expenseTotal);
+      setBalance(calculatedBalance);
+    };
 
-           setTotalIncome(incomeTotal);
-           setTotalExpense(expenseTotal);
-           setBalance(calculatedBalance);
-      };
-
-      fetchTransaction();
-    }, []);
-
-
-
+    fetchTransaction();
+  }, [transactionUpdated]);
 
   return (
     <div className="flex gap-4 my-4">

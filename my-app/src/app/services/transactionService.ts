@@ -15,3 +15,18 @@ export const getTransaction = async() => {
     const response = await axios.get(`http://localhost:3001/details?userId=${userId}`);
     return response.data
 }
+
+export const updateTransaction = async (transaction:Itransaction) => {
+  const response = await axios.put(
+    `http://localhost:3001/details/${transaction.id}`,
+    transaction
+  );
+  return response.data;
+};
+
+export const deleteTransaction = async (transactionId:string) => {
+  const response = await axios.delete(
+    `http://localhost:3001/details/${transactionId}`
+  );
+  return response.data;
+};

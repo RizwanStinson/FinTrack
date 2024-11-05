@@ -1,61 +1,70 @@
 import React from "react";
 import {
-  LayoutDashboard,
-  PiggyBank,
-  LineChart,
-  Calendar,
-  Settings,
-  LogOut,
   Plus,
   Filter,
   Download,
+  Search,
+  ChevronDown,
+  MoreVertical,
+  Edit,
+  Trash,
 } from "lucide-react";
 
-const FinanceTrackerLayout = () => {
-  return (
-    <div className="flex h-screen bg-gray-100">
-      {/* Sidebar */}
-      <div className="w-64 bg-white shadow-lg">
-        <div className="p-4">
-          <h1 className="text-xl font-bold text-blue-600">FinanceTracker</h1>
-          <div className="mt-4">
-            <div className="flex items-center p-2 text-gray-700 rounded hover:bg-blue-50 cursor-pointer">
-              <LayoutDashboard className="w-5 h-5 mr-2" />
-              <span>Dashboard</span>
-            </div>
-            <div className="flex items-center p-2 text-gray-700 rounded hover:bg-blue-50 cursor-pointer">
-              <PiggyBank className="w-5 h-5 mr-2" />
-              <span>Transactions</span>
-            </div>
-            <div className="flex items-center p-2 text-gray-700 rounded hover:bg-blue-50 cursor-pointer">
-              <LineChart className="w-5 h-5 mr-2" />
-              <span>Budget</span>
-            </div>
-            <div className="flex items-center p-2 text-gray-700 rounded hover:bg-blue-50 cursor-pointer">
-              <Calendar className="w-5 h-5 mr-2" />
-              <span>Goals</span>
-            </div>
-            <div className="flex items-center p-2 text-gray-700 rounded hover:bg-blue-50 cursor-pointer">
-              <Settings className="w-5 h-5 mr-2" />
-              <span>Settings</span>
-            </div>
-          </div>
-        </div>
-        <div className="absolute bottom-0 w-64 p-4 border-t">
-          <div className="flex items-center text-gray-700 cursor-pointer">
-            <LogOut className="w-5 h-5 mr-2" />
-            <span>Logout</span>
-          </div>
-        </div>
-      </div>
+const TransactionsPage = () => {
+  // Sample transaction data
+  const transactions = [
+    {
+      id: 1,
+      date: "2024-11-04",
+      description: "Grocery Shopping",
+      category: "Food",
+      amount: -85.45,
+      type: "expense",
+    },
+    {
+      id: 2,
+      date: "2024-11-03",
+      description: "Monthly Salary",
+      category: "Income",
+      amount: 3500.0,
+      type: "income",
+    },
+    {
+      id: 3,
+      date: "2024-11-02",
+      description: "Netflix Subscription",
+      category: "Entertainment",
+      amount: -15.99,
+      type: "expense",
+    },
+    {
+      id: 4,
+      date: "2024-11-01",
+      description: "Gas Station",
+      category: "Transportation",
+      amount: -45.3,
+      type: "expense",
+    },
+    {
+      id: 5,
+      date: "2024-10-31",
+      description: "Freelance Payment",
+      category: "Income",
+      amount: 750.0,
+      type: "income",
+    },
+  ];
 
-      {/* Main Content */}
-      <div className="flex-1 overflow-auto">
-        {/* Header */}
-        <header className="bg-white shadow-sm p-4">
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-white shadow">
+        <div className="mx-auto max-w-7xl px-4 py-6">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold">Dashboard</h2>
-            <div className="flex space-x-2">
+            <h1 className="text-2xl font-semibold text-gray-900">
+              Transactions
+            </h1>
+            <div className="flex gap-3">
               <button className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
                 <Plus className="w-4 h-4 mr-2" />
                 Add Transaction
@@ -70,62 +79,159 @@ const FinanceTrackerLayout = () => {
               </button>
             </div>
           </div>
-        </header>
+        </div>
+      </div>
 
-        {/* Dashboard Content */}
-        <div className="p-6">
-          {/* Summary Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-sm font-medium text-gray-500">
-                Total Balance
-              </h3>
-              <p className="text-2xl font-bold text-gray-900">$12,750.85</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-sm font-medium text-gray-500">
-                Monthly Income
-              </h3>
-              <p className="text-2xl font-bold text-green-600">+$4,250.00</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-sm font-medium text-gray-500">
-                Monthly Expenses
-              </h3>
-              <p className="text-2xl font-bold text-red-600">-$2,150.45</p>
+      {/* Main Content */}
+      <div className="mx-auto max-w-7xl px-4 py-6">
+        {/* Search and Filters */}
+        <div className="bg-white rounded-lg shadow mb-6">
+          <div className="p-4">
+            <div className="flex flex-col md:flex-row gap-4">
+              {/* Search */}
+              <div className="flex-1">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="text"
+                    placeholder="Search transactions..."
+                    className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                </div>
+              </div>
+
+              {/* Filter Dropdowns */}
+              <div className="flex gap-4">
+                <div className="relative">
+                  <button className="px-4 py-2 border rounded-lg hover:bg-gray-50 flex items-center">
+                    Category
+                    <ChevronDown className="w-4 h-4 ml-2" />
+                  </button>
+                </div>
+                <div className="relative">
+                  <button className="px-4 py-2 border rounded-lg hover:bg-gray-50 flex items-center">
+                    Date Range
+                    <ChevronDown className="w-4 h-4 ml-2" />
+                  </button>
+                </div>
+                <div className="relative">
+                  <button className="px-4 py-2 border rounded-lg hover:bg-gray-50 flex items-center">
+                    Amount
+                    <ChevronDown className="w-4 h-4 ml-2" />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Recent Transactions */}
-          <div className="bg-white rounded-lg shadow mb-6">
-            <div className="p-4 border-b">
-              <h3 className="text-lg font-semibold">Recent Transactions</h3>
+        {/* Transactions Table */}
+        <div className="bg-white rounded-lg shadow overflow-hidden">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Date
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Description
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Category
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Amount
+                </th>
+                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {transactions.map((transaction) => (
+                <tr key={transaction.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {new Date(transaction.date).toLocaleDateString()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {transaction.description}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <span
+                      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                      ${
+                        transaction.type === "income"
+                          ? "bg-green-100 text-green-800"
+                          : "bg-red-100 text-red-800"
+                      }`}
+                    >
+                      {transaction.category}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                    <span
+                      className={
+                        transaction.amount >= 0
+                          ? "text-green-600"
+                          : "text-red-600"
+                      }
+                    >
+                      {transaction.amount >= 0 ? "+" : ""}
+                      {transaction.amount.toFixed(2)}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <div className="flex justify-end gap-2">
+                      <button className="text-blue-600 hover:text-blue-900">
+                        <Edit className="w-4 h-4" />
+                      </button>
+                      <button className="text-red-600 hover:text-red-900">
+                        <Trash className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* Pagination */}
+          <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+            <div className="flex-1 flex justify-between sm:hidden">
+              <button className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                Previous
+              </button>
+              <button className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                Next
+              </button>
             </div>
-            <div className="p-4">
-              <table className="w-full">
-                <thead>
-                  <tr className="text-left text-gray-500">
-                    <th className="pb-4">Date</th>
-                    <th className="pb-4">Description</th>
-                    <th className="pb-4">Category</th>
-                    <th className="pb-4 text-right">Amount</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-t">
-                    <td className="py-4">Oct 15</td>
-                    <td>Grocery Shopping</td>
-                    <td>Food</td>
-                    <td className="text-right text-red-600">-$85.45</td>
-                  </tr>
-                  <tr className="border-t">
-                    <td className="py-4">Oct 14</td>
-                    <td>Salary Deposit</td>
-                    <td>Income</td>
-                    <td className="text-right text-green-600">+$3,500.00</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm text-gray-700">
+                  Showing <span className="font-medium">1</span> to{" "}
+                  <span className="font-medium">5</span> of{" "}
+                  <span className="font-medium">20</span> results
+                </p>
+              </div>
+              <div>
+                <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
+                  <button className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    Previous
+                  </button>
+                  <button className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    1
+                  </button>
+                  <button className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    2
+                  </button>
+                  <button className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    3
+                  </button>
+                  <button className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    Next
+                  </button>
+                </nav>
+              </div>
             </div>
           </div>
         </div>
@@ -134,4 +240,4 @@ const FinanceTrackerLayout = () => {
   );
 };
 
-export default FinanceTrackerLayout;
+export default TransactionsPage;

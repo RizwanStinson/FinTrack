@@ -24,24 +24,6 @@
   ],
   "details": [
     {
-      "id": "ad56",
-      "type": "expense",
-      "amount": 1000,
-      "category": "Freelance",
-      "date": "2024-11-14T18:00:00.000Z",
-      "description": "Check",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "ac56",
-      "type": "income",
-      "amount": 1200,
-      "category": "Freelance",
-      "date": "2024-11-14T18:00:00.000Z",
-      "description": "Check",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
       "id": "ab56",
       "type": "income",
       "amount": 300,
@@ -51,30 +33,66 @@
       "userId": "0a67324e-aec-4402-9a20-fcf570995ad5"
     },
     {
-      "id": "aa56",
+      "id": "dc1a",
       "type": "income",
-      "amount": 1200,
+      "amount": 100,
+      "category": "Salary",
+      "date": "2024-11-12T18:00:00.000Z",
+      "description": "Test",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "ee7c",
+      "type": "income",
+      "amount": 200,
+      "category": "Salary",
+      "date": "2024-11-21T18:00:00.000Z",
+      "description": "Hmm",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "e80f",
+      "type": "income",
+      "amount": 200,
+      "category": "Investment",
+      "date": "2024-11-20T18:00:00.000Z",
+      "description": "xfb",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "31df",
+      "type": "income",
+      "amount": 500,
+      "category": "Investment",
+      "date": "2024-11-20T18:00:00.000Z",
+      "description": "ad",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "e023",
+      "type": "income",
+      "amount": 100,
+      "category": "Salary",
+      "date": "2024-11-12T18:00:00.000Z",
+      "description": ";",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "fa04",
+      "type": "income",
+      "amount": 58,
       "category": "Freelance",
-      "date": "2024-12-14T18:00:00.000Z",
-      "description": "Check",
+      "date": "2024-11-28T18:00:00.000Z",
+      "description": "e",
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
     },
     {
-      "id": "bfbc",
-      "type": "expense",
-      "amount": 100,
-      "category": "Investment",
-      "date": "2024-11-13T18:00:00.000Z",
-      "description": "Okay",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "2477",
-      "type": "expense",
-      "amount": 100,
-      "category": "Investment",
-      "date": "2024-11-13T18:00:00.000Z",
-      "description": "Okay",
+      "id": "c458",
+      "type": "income",
+      "amount": 98,
+      "category": "Rizwan",
+      "date": "2024-11-21T18:00:00.000Z",
+      "description": "ok",
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
     }
   ]

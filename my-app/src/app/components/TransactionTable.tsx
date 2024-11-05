@@ -3,19 +3,23 @@ import { useEffect, useState } from "react";
 import { getTransaction } from "../services/transactionService";
 import { format } from "date-fns";
 
-export function TransactionTable() {
+interface DashBoardSummaryProps {
+  transactionUpdated: boolean;
+}
+
+export function TransactionTable({ transactionUpdated }: DashBoardSummaryProps) {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
     const fetchTransaction = async () => {
       const serviceResponse = await getTransaction();
 
-      const recentTransactions = serviceResponse.slice(-5).reverse(); 
+      const recentTransactions = serviceResponse.slice(-5).reverse();
       setTransactions(recentTransactions);
     };
 
     fetchTransaction();
-  }, []);
+  }, [transactionUpdated]);
 
   return (
     <Card>
