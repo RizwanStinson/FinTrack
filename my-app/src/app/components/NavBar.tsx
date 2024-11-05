@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
 import { Button } from "@/components/ui/button";
 import { Filter, FileDown } from "lucide-react";
@@ -28,7 +28,8 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { transaction } from "../services/transactionService";
+import { getTransaction, transaction } from "../services/transactionService";
+import { Itransaction } from "../interfaces/interfaces";
 
 type NavBarProps = {
   onTransactionUpdate: () => void;
@@ -40,15 +41,24 @@ function NavBar({ onTransactionUpdate }: NavBarProps) {
   const [category, setCategory] = useState("");
   const [categories, setCategories] = useState([
     "Salary",
-    "Freelance",
-    "Investment",
   ]);
   const [date, setDate] = useState<Date | null>(null);
   const [description, setDescription] = useState("");
   const [newCategory, setNewCategory] = useState("");
   const [isAddingCategory, setIsAddingCategory] = useState(false);
 
+  useEffect(() => {
+    handleAddTransaction();
+  }, []);
 
+const handleAddTransaction = async () => {
+const response = await getTransaction()
+const uniqueCategory: string[] = Array.from(
+  new Set(response.map((transaction: Itransaction) => transaction.category))
+);
+console.log("Unique: ", uniqueCategory)
+setCategories(uniqueCategory)
+}
   const handleAddCategory = () => {
     if (newCategory.trim()) {
       addCategory(newCategory);
@@ -86,7 +96,7 @@ function NavBar({ onTransactionUpdate }: NavBarProps) {
           <div className="flex gap-2">
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="primary">+ Add Transaction</Button>
+                <Button variant="primary" onClick={handleAddTransaction}>+ Add Transaction</Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>

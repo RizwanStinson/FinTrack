@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Itransaction } from "../interfaces/interfaces";
+import { ITran, Itransaction } from "../interfaces/interfaces";
 
 
 export const transaction = async (transactionData: Itransaction) => {
@@ -16,7 +16,7 @@ export const getTransaction = async() => {
     return response.data
 }
 
-export const updateTransaction = async (transaction:Itransaction) => {
+export const updateTransaction = async (transaction:ITran) => {
   const response = await axios.put(
     `http://localhost:3001/details/${transaction.id}`,
     transaction

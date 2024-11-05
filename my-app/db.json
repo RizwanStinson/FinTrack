@@ -45,7 +45,7 @@
       "id": "ee7c",
       "type": "income",
       "amount": 200,
-      "category": "Salary",
+      "category": "Chicken",
       "date": "2024-11-21T18:00:00.000Z",
       "description": "Hmm",
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
@@ -95,5 +95,28 @@
       "description": "ok",
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
     }
+  ],
+  "budget": [
+    {
+      "id": "9a0d",
+      "category": "Chicken",
+      "amount": 600,
+      "monthYear": "November 2024",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "9j0d",
+      "category": "Chicken",
+      "amount": 600,
+      "monthYear": "December 2024",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+     {
+       "id": "9p0d",
+       "category": "Chicken",
+       "amount": 700,
+       "monthYear": "November 2024",
+       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+     }
   ]
 }
