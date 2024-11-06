@@ -254,11 +254,6 @@ setCategories(uniqueCategory)
                 </DialogClose> */}
               </DialogContent>
             </Dialog>
-
-            <Button variant="secondary" className="flex items-center gap-2">
-              <Filter />
-              Filter
-            </Button>
             <Button variant="secondary" className="flex items-center gap-2">
               <FileDown />
               Export

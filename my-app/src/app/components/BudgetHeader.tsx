@@ -10,7 +10,7 @@ import { format } from "date-fns";
 import { budgetPost } from "../services/budgetService";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../redux/store";
-import { setCategories, addCategory } from "../redux/slices/categorySlice";
+import { setCategories, addCategory, toggleRefresh } from "../redux/slices/categorySlice";
 
 
 export const BudgetHeader = () => {
@@ -22,6 +22,7 @@ export const BudgetHeader = () => {
     const [category, setCategory] = useState("");
      const [isAddingCategory, setIsAddingCategory] = useState(false);
 const [newCategory, setNewCategory] = useState("");
+
 
      useEffect(() => {
        handleAddTransaction();
@@ -43,6 +44,8 @@ const [newCategory, setNewCategory] = useState("");
           monthYear: format(new Date(), "MMMM yyyy"),
         };
          await budgetPost(budgetData)
+        dispatch(toggleRefresh());
+         
      }
 
      const handleAddTransaction = async () => {
@@ -57,7 +60,7 @@ const [newCategory, setNewCategory] = useState("");
      };
 
   return (
-    <div className="bg-white shadow">
+    <div className="bg-white shadow mb-4">
       <div className="mx-auto max-w-7xl px-4 py-6">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-semibold text-gray-900">Budget</h1>

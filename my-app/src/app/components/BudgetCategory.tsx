@@ -1,15 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AlertCircle, ChevronDown } from "lucide-react";
+import { getBudget } from "../services/budgetService";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
-export const BudgetCategory = () => {
-  const monthlyBudgets = [
-    { category: "Housing", budget: 2000, spent: 1800, color: "#4F46E5" },
-    { category: "Food", budget: 600, spent: 450, color: "#10B981" },
-    { category: "Transportation", budget: 400, spent: 380, color: "#F59E0B" },
-    { category: "Entertainment", budget: 300, spent: 275, color: "#EC4899" },
-    { category: "Shopping", budget: 400, spent: 425, color: "#8B5CF6" },
-    { category: "Utilities", budget: 200, spent: 180, color: "#3B82F6" },
-  ];
+interface BudgetCategoryProps {
+  category: string;
+  budget: number;
+  spent: number;
+  color: string;
+}
+
+export const BudgetCategory: React.FC = () => {
+  const [monthlyBudgets, setMonthlyBudgets] = useState<BudgetCategoryProps[]>(
+    []
+  );
+  const filteredExpenses = useSelector(
+    (state: RootState) => state.expense.filteredExpenses
+  );
+   const refresh = useSelector((state: RootState) => state.category.refresh);
+
+  useEffect(() => {
+    const fetchBudget = async () => {
+      const allBudget = await getBudget();
+
+      const topBudgets = allBudget
+        .sort((a: any, b: any) => b.amount - a.amount)
+        .slice(0, 10);
+      const formattedBudgets = topBudgets.map((item: any, index: number) => ({
+        category: item.category,
+        budget: item.amount,
+        spent: 0, 
+        color: getColorByIndex(index),
+      }));
+
+      const updatedBudgets = formattedBudgets.map((budgetCategory:any) => {
+        const totalSpentForCategory = filteredExpenses
+          .filter((expense) => expense.category === budgetCategory.category)
+          .reduce((sum, expense) => sum + expense.amount, 0);
+
+        return { ...budgetCategory, spent: totalSpentForCategory };
+      });
+
+      setMonthlyBudgets(updatedBudgets);
+    };
+
+    fetchBudget();
+  }, [filteredExpenses,refresh]); 
+
+
+  const getColorByIndex = (index: number) => {
+    const colors = [
+      "#4F46E5",
+      "#10B981",
+      "#F59E0B",
+      "#EC4899",
+      "#8B5CF6",
+      "#3B82F6",
+      "#EF4444",
+      "#14B8A6",
+      "#DB2777",
+      "#D97706",
+    ];
+    return colors[index % colors.length];
+  };
 
   return (
     <div className="bg-white rounded-lg shadow">
@@ -50,14 +104,18 @@ export const BudgetCategory = () => {
                   <div className="flex items-center text-sm text-red-600">
                     <AlertCircle className="w-4 h-4 mr-1" />
                     <span>
-                      Over budget by ${category.spent - category.budget}
+                      Over budget by $
+                      {Math.abs(category.spent - category.budget)}
                     </span>
                   </div>
                 )}
                 <div className="h-2 bg-gray-200 rounded-full">
                   <div
-                    className="h-full bg-blue-600 rounded-full"
-                    style={{ width: `${Math.min(percentage, 100)}%` }}
+                    className="h-full rounded-full"
+                    style={{
+                      width: `${Math.min(percentage, 100)}%`,
+                      backgroundColor: category.color,
+                    }}
                   />
                 </div>
               </div>

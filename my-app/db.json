@@ -47,33 +47,6 @@
       "userId": "0a67324e-aec-4402-9a20-fcf570995ad5"
     },
     {
-      "id": "dc1a",
-      "type": "income",
-      "amount": 100,
-      "category": "Salary",
-      "date": "2024-11-12T18:00:00.000Z",
-      "description": "Test",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "ee7c",
-      "type": "income",
-      "amount": 200,
-      "category": "Chicken",
-      "date": "2024-11-21T18:00:00.000Z",
-      "description": "Hmm",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "e80f",
-      "type": "income",
-      "amount": 200,
-      "category": "Investment",
-      "date": "2024-11-20T18:00:00.000Z",
-      "description": "xfb",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
       "id": "31df",
       "type": "income",
       "amount": 500,
@@ -108,6 +81,15 @@
       "date": "2024-11-21T18:00:00.000Z",
       "description": "ok",
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "7e9a",
+      "type": "expense",
+      "amount": 34,
+      "category": "Rizwan",
+      "date": "2024-11-07T18:00:00.000Z",
+      "description": "e",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
     }
   ],
   "budget": [
@@ -129,6 +111,20 @@
       "id": "9p0d",
       "category": "Rizwan",
       "amount": 700,
+      "monthYear": "November 2024",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "835b",
+      "category": "Lets See",
+      "amount": 500,
+      "monthYear": "November 2024",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "d0b0",
+      "category": "Chexk",
+      "amount": 8000,
       "monthYear": "November 2024",
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
     }

@@ -11,16 +11,32 @@ import SideBar from "../components/SideBar";
 
 const BudgetPage = () => {
   return (
+    // <Provider store={store}>
+    //   <div className="flex min-h-screen bg-gray-50">
+    //     <SideBar />
+    //     <div className="min-h-screen bg-gray-50">
+    //       <BudgetHeader />
+    //       <div className="mx-auto max-w-7xl px-4 py-6">
+    //         <BudgetOverview />
+    //         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+    //           <BudgetBreakdown />
+    //           <BudgetMonthlyTrend />
+    //         </div>
+    //         <BudgetCategory />
+    //       </div>
+    //     </div>
+    //   </div>
+    // </Provider>
     <Provider store={store}>
       <div className="flex min-h-screen bg-gray-50">
         <SideBar />
-        <div className="min-h-screen bg-gray-50">
+        <div className="flex-1 p-6 mb-8">
           <BudgetHeader />
-          <div className="mx-auto max-w-7xl px-4 py-6">
+          <div className="mx-auto max-w-7xl">
             <BudgetOverview />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-              <BudgetBreakdown />
-              <BudgetMonthlyTrend />
+              {/* <BudgetBreakdown />
+              <BudgetMonthlyTrend /> */}
             </div>
             <BudgetCategory />
           </div>
