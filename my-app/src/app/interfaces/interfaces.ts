@@ -4,6 +4,12 @@ export interface ISignup {
     password: string
 }
 
+export interface ILogin {
+  email: string;
+  password: string;
+}
+
+
 export interface Itransaction {
     type: string,
     amount: number,
@@ -50,4 +56,14 @@ export interface IAddGoal {
   startDate: Date | null;
   endDate: Date | null;
   savings: number;
+}
+
+export interface IG {
+  id: string;
+  goalName: string;
+  targetAmount: number;
+  startDate: Date | null;
+  endDate: Date | null;
+  savings: number;
+  userId: string;
 }

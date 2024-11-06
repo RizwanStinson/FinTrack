@@ -20,6 +20,20 @@
       "email": "o",
       "password": "d",
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "a4cc",
+      "userName": "CC",
+      "email": "CC",
+      "password": "CC",
+      "userId": "cc21ea6c-7110-407f-884f-035942073d79"
+    },
+    {
+      "id": "c906",
+      "userName": "Lupsu",
+      "email": "l",
+      "password": "l",
+      "userId": "e278d0b5-29c5-40bd-bdbd-9a449fc249aa"
     }
   ],
   "details": [
@@ -121,21 +135,30 @@
   ],
   "goals": [
     {
-      "id": "a0bd",
-      "goalName": "Check",
-      "targetAmount": 500,
-      "startDate": "2024-11-06T18:00:00.000Z",
+      "id": "2be4",
+      "goalName": "Okay",
+      "targetAmount": 5000,
+      "startDate": "2024-11-01T18:00:00.000Z",
       "endDate": "2024-11-14T18:00:00.000Z",
+      "savings": 600,
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "041e",
+      "goalName": "R",
+      "targetAmount": 58,
+      "startDate": "2024-11-05T18:00:00.000Z",
+      "endDate": "2024-11-06T18:00:00.000Z",
       "savings": 50,
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
     },
     {
-      "id": "2be4",
-      "goalName": "Okay",
-      "targetAmount": 5000,
-      "startDate": "2024-11-06T18:00:00.000Z",
-      "endDate": "2024-11-14T18:00:00.000Z",
-      "savings": 500,
+      "id": "453d",
+      "goalName": "i",
+      "targetAmount": 98,
+      "startDate": "2024-11-04T18:00:00.000Z",
+      "endDate": "2024-11-06T18:00:00.000Z",
+      "savings": 8,
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
     }
   ]
