@@ -111,12 +111,32 @@
       "monthYear": "December 2024",
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
     },
-     {
-       "id": "9p0d",
-       "category": "Rizwan",
-       "amount": 700,
-       "monthYear": "November 2024",
-       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-     }
+    {
+      "id": "9p0d",
+      "category": "Rizwan",
+      "amount": 700,
+      "monthYear": "November 2024",
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    }
+  ],
+  "goals": [
+    {
+      "id": "a0bd",
+      "goalName": "Check",
+      "targetAmount": 500,
+      "startDate": "2024-11-06T18:00:00.000Z",
+      "endDate": "2024-11-14T18:00:00.000Z",
+      "savings": 50,
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "2be4",
+      "goalName": "Okay",
+      "targetAmount": 5000,
+      "startDate": "2024-11-06T18:00:00.000Z",
+      "endDate": "2024-11-14T18:00:00.000Z",
+      "savings": 500,
+      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    }
   ]
 }

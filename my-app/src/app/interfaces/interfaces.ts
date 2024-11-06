@@ -43,3 +43,11 @@ export interface INewtransaction {
   date: Date | null;
   description: string;
 }
+
+export interface IAddGoal {
+  goalName: string;
+  targetAmount: number;
+  startDate: Date | null;
+  endDate: Date | null;
+  savings: number;
+}
