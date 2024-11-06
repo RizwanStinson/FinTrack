@@ -7,61 +7,70 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Input } from "@/components/ui/input";
 import { Itransaction } from "../interfaces/interfaces";
 
+interface RefreshProps {
+  transactionUpdated: boolean;
+}
 
-export function TableAll() {
-    const [transactions, setTransactions] = useState([]);
-     const [selectedTransaction, setSelectedTransaction] = useState<Itransaction | null>(null);
-     const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
-      useEffect(() => {
-        fetchTransactions();
-      }, []);
+export function TableAll({ transactionUpdated }: RefreshProps) {
+  const [transactions, setTransactions] = useState([]);
+  const [selectedTransaction, setSelectedTransaction] =
+    useState<Itransaction | null>(null);
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
-      const fetchTransactions = async () => {
-        const serviceResponse = await getTransaction();
-        setTransactions(serviceResponse);
+  useEffect(() => {
+    fetchTransactions();
+  }, [transactionUpdated]);
+
+  const fetchTransactions = async () => {
+    const serviceResponse = await getTransaction();
+    setTransactions(serviceResponse);
+  };
+
+  const handleEditClick = (transaction: Itransaction) => {
+    setSelectedTransaction(transaction);
+    setIsEditDialogOpen(true);
+  };
+
+  const handleDeleteClick = async (transactionId: string) => {
+    await deleteTransaction(transactionId);
+    fetchTransactions();
+  };
+
+  const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setSelectedTransaction((prev) => {
+      if (prev === null) return null;
+      return {
+        ...prev,
+        [name]: name === "amount" ? Number(value) : value,
       };
+    });
+  };
 
-      const handleEditClick = (transaction:Itransaction) => {
-        setSelectedTransaction(transaction);
-        setIsEditDialogOpen(true);
+  const handleEditSave = async () => {
+    if (selectedTransaction) {
+      const transactionToUpdate = {
+        ...selectedTransaction,
+        amount: Number(selectedTransaction.amount),
       };
+      await updateTransaction(transactionToUpdate);
+      setIsEditDialogOpen(false);
+      fetchTransactions();
+    }
+  };
 
-      const handleDeleteClick = async (transactionId:string) => {
-        await deleteTransaction(transactionId);
-        fetchTransactions(); // Refresh the list after deletion
-      };
+  // useEffect(() => {
+  //   const fetchTransaction = async () => {
+  //     const serviceResponse = await getTransaction();
+  //     setTransactions(serviceResponse);
+  //     console.log("T:", transactions)
+  //   };
 
-      const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setSelectedTransaction((prev) => {
-          if (prev === null) return null;
-          return {
-            ...prev,
-            [name]: value,
-          };
-        });
-      };
+  //   fetchTransaction();
+  // }, []);
 
-      const handleEditSave = async () => {
-        if (selectedTransaction) {
-          await updateTransaction(selectedTransaction);
-          setIsEditDialogOpen(false);
-          fetchTransactions(); // Refresh the list after updating
-        }
-      };      
-
-// useEffect(() => {
-//   const fetchTransaction = async () => {
-//     const serviceResponse = await getTransaction();
-//     setTransactions(serviceResponse);
-//     console.log("T:", transactions)
-//   };
-
-//   fetchTransaction();
-// }, []);
-
-console.log("T:", transactions);
+  console.log("T:", transactions);
   return (
     <Card>
       <CardHeader>
@@ -137,7 +146,7 @@ console.log("T:", transactions);
             <Input
               name="amount"
               type="number"
-              value={selectedTransaction?.amount || ""}
+              value={selectedTransaction?.amount || 0}
               onChange={handleEditChange}
               placeholder="Amount"
             />

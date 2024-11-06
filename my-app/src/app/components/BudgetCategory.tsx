@@ -73,10 +73,6 @@ export const BudgetCategory: React.FC = () => {
             Category Budgets
           </h2>
           <div className="flex gap-2">
-            <button className="px-4 py-2 text-sm border rounded-lg hover:bg-gray-50">
-              This Month
-              <ChevronDown className="w-4 h-4 ml-2 inline" />
-            </button>
           </div>
         </div>
         <div className="space-y-6">

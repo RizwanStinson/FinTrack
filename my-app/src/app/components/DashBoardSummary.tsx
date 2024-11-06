@@ -56,19 +56,24 @@ function DashBoardSummary({ transactionUpdated }: DashBoardSummaryProps) {
         (sum: number, item: Itransaction) => sum + item.amount,
         0
       );
+       const incomeTotalNumber = Number(incomeTotal); 
       const expenseTotal = expenseTransactions.reduce(
         (sum: number, item: Itransaction) => sum + item.amount,
         0
       );
       const calculatedBalance = incomeTotal - expenseTotal;
 
-      setTotalIncome(incomeTotal);
+      setTotalIncome(incomeTotalNumber);
       setTotalExpense(expenseTotal);
       setBalance(calculatedBalance);
     };
 
     fetchTransaction();
   }, [transactionUpdated]);
+
+  console.log("Type of balance:", typeof balance); 
+  console.log("Type of totalIncome:", typeof totalIncome); 
+  console.log("Type of totalExpense:", typeof totalExpense); 
 
   return (
     <div className="flex gap-4 my-4">

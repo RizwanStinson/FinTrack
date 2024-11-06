@@ -9,6 +9,7 @@ interface DashBoardSummaryProps {
 
 export function TransactionTable({ transactionUpdated }: DashBoardSummaryProps) {
   const [transactions, setTransactions] = useState([]);
+  
 
   useEffect(() => {
     const fetchTransaction = async () => {

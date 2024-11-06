@@ -5,61 +5,67 @@ import { Goals, updateSavings } from "../services/goalService";
 import { isBefore, isAfter } from "date-fns";
 import { IG } from "../interfaces/interfaces";
 
-export const GoalsActive = () => {
-  const [ActiveGoalsAll, setActiveGoalsAll] = useState<IG[]>([]); 
-   const [showModal, setShowModal] = useState(false); 
-   const [goalToUpdate, setGoalToUpdate] = useState<IG | null>(null);
-   const [amountToAdd, setAmountToAdd] = useState<number>(0);
+interface RefreshProps {
+  transactionUpdated: boolean;
+}
+
+export const GoalsActive = ({ transactionUpdated }: RefreshProps) => {
+  const [ActiveGoalsAll, setActiveGoalsAll] = useState<IG[]>([]);
+  const [showModal, setShowModal] = useState(false);
+  const [goalToUpdate, setGoalToUpdate] = useState<IG | null>(null);
+  const [amountToAdd, setAmountToAdd] = useState<number>(0);
 
   useEffect(() => {
     const fetchGoals = async () => {
       const allGoals = await Goals();
-      const today = new Date(); 
-      
+      const today = new Date();
+
       const activeGoals = allGoals.filter((goal: IG) => {
         const startDate = goal.startDate ? new Date(goal.startDate) : null;
         const endDate = goal.endDate ? new Date(goal.endDate) : null;
 
-        
-        return startDate && endDate && isAfter(today, startDate) && isBefore(today, endDate);
+        return (
+          startDate &&
+          endDate &&
+          isAfter(today, startDate) &&
+          isBefore(today, endDate)
+        );
       });
 
-      setActiveGoalsAll(activeGoals); 
+      setActiveGoalsAll(activeGoals);
     };
 
     fetchGoals();
-  }, []);
+  }, [transactionUpdated]);
 
   console.log("Active Goals: ", ActiveGoalsAll);
 
-    const handleAddSavings = (goal: IG) => {
-      setGoalToUpdate(goal); 
-      setShowModal(true); 
-    };
+  const handleAddSavings = (goal: IG) => {
+    setGoalToUpdate(goal);
+    setShowModal(true);
+  };
 
-    const handleSaveSavings = async () => {
-      if (goalToUpdate) {
-        const updatedGoal = {
-          ...goalToUpdate,
-          savings: goalToUpdate.savings + amountToAdd,
-        };
+  const handleSaveSavings = async () => {
+    if (goalToUpdate) {
+      const updatedGoal = {
+        ...goalToUpdate,
+        savings: goalToUpdate.savings + amountToAdd,
+      };
 
-       
-        await updateSavings(updatedGoal);
+      await updateSavings(updatedGoal);
 
-       
-        setActiveGoalsAll((prevGoals) =>
-          prevGoals.map((goal) =>
-            goal.id === goalToUpdate.id
-              ? { ...goal, savings: goalToUpdate.savings + amountToAdd }
-              : goal
-          )
-        );
+      setActiveGoalsAll((prevGoals) =>
+        prevGoals.map((goal) =>
+          goal.id === goalToUpdate.id
+            ? { ...goal, savings: goalToUpdate.savings + amountToAdd }
+            : goal
+        )
+      );
 
-        setShowModal(false); 
-        setAmountToAdd(0); 
-      }
-    };
+      setShowModal(false);
+      setAmountToAdd(0);
+    }
+  };
 
   return (
     <div className="bg-white rounded-lg shadow">
@@ -71,7 +77,15 @@ export const GoalsActive = () => {
       <div className="p-6 space-y-6">
         {ActiveGoalsAll.length > 0 ? (
           ActiveGoalsAll.map((goal) => {
-            const progress = (goal.savings / goal.targetAmount) * 100;
+            // const progress = (goal.savings / goal.targetAmount) * 100;
+            const progress = Math.min(
+              (goal.savings / goal.targetAmount) * 100,
+              100
+            );
+            const exceededAmount =
+              goal.savings > goal.targetAmount
+                ? goal.savings - goal.targetAmount
+                : 0;
 
             return (
               <div
@@ -114,6 +128,11 @@ export const GoalsActive = () => {
                   <div className="mt-2 text-sm font-medium text-gray-500">
                     Savings: ${goal.savings.toFixed(2)}
                   </div>
+                  {exceededAmount > 0 && (
+                    <div className="mt-1 text-sm text-red-500">
+                      Exceeded by: ${exceededAmount.toFixed(2)}
+                    </div>
+                  )}
                 </div>
                 <Button
                   variant="ghost"
@@ -146,7 +165,7 @@ export const GoalsActive = () => {
               <Button
                 variant="outline"
                 className="w-1/2"
-                onClick={() => setShowModal(false)} 
+                onClick={() => setShowModal(false)}
               >
                 Cancel
               </Button>

@@ -10,8 +10,12 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Select, SelectTrigger } from "@/components/ui/select";
 import { postGoal } from "../services/goalService";
 
+type NavBarProps = {
+  onTransactionUpdate: () => void;
+};
 
-const GoalsNavBar = () => {
+
+const GoalsNavBar = ({ onTransactionUpdate }: NavBarProps) => {
   const [goalName, setGoalName] = useState("");
   const [targetAmount, setTargetAmount] = useState("");
   const [startDate, setStartDate] = useState<Date | null>(null);
@@ -19,24 +23,23 @@ const GoalsNavBar = () => {
   const [savings, setSavings] = useState("");
 
   const handleSubmit = async () => {
-    const goalData ={
-        goalName,
-        targetAmount: parseFloat(targetAmount),
-        startDate,
-        endDate,
-        savings:parseFloat(savings)
+    const goalData = {
+      goalName,
+      targetAmount: parseFloat(targetAmount),
+      startDate,
+      endDate,
+      savings: parseFloat(savings),
+    };
+    const response = await postGoal(goalData);
+    if (response) {
+      setGoalName("");
+      setTargetAmount("");
+      setStartDate(null);
+      setEndDate(null);
+      setSavings("");
+      onTransactionUpdate();
     }
-    const response = await postGoal(goalData)
-    if(response){
-        setGoalName("");
-        setTargetAmount("");
-        setStartDate(null);
-        setEndDate(null);
-        setSavings("");
-    }
-
-  }
-
+  };
 
   return (
     <div className="bg-white shadow">

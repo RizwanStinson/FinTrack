@@ -15,14 +15,17 @@ function page({}: Props) {
      };
 
   return (
-   <div className="flex">
-     <SideBar />
-     <div className="flex-1 p-6">
-       <NavBar onTransactionUpdate={handleTransactionUpdate} />
-       <SearchBar />
-       <TableAll />
-     </div>
-   </div>
-)}
+    <div className="flex">
+      <SideBar />
+      <div className="flex-1 p-6">
+        <NavBar
+          onTransactionUpdate={handleTransactionUpdate}
+          title="Transactions"
+        />{" "}
+        <SearchBar />
+        <TableAll transactionUpdated={transactionUpdated} />
+      </div>
+    </div>
+  );}
 
 export default page;

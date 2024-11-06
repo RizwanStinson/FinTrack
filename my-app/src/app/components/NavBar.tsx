@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { jsPDF } from "jspdf";
 import SideBar from "../components/SideBar";
 import { Button } from "@/components/ui/button";
 import { Filter, FileDown } from "lucide-react";
@@ -33,9 +34,10 @@ import { Itransaction } from "../interfaces/interfaces";
 
 type NavBarProps = {
   onTransactionUpdate: () => void;
+  title: string;
 };
 
-function NavBar({ onTransactionUpdate }: NavBarProps) {
+function NavBar({ onTransactionUpdate, title }: NavBarProps) {
   const [type, setType] = useState("income");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
@@ -46,6 +48,7 @@ function NavBar({ onTransactionUpdate }: NavBarProps) {
   const [description, setDescription] = useState("");
   const [newCategory, setNewCategory] = useState("");
   const [isAddingCategory, setIsAddingCategory] = useState(false);
+   const [transactions, setTransactions] = useState<Itransaction[]>([]);
 
   useEffect(() => {
     handleAddTransaction();
@@ -53,6 +56,7 @@ function NavBar({ onTransactionUpdate }: NavBarProps) {
 
 const handleAddTransaction = async () => {
 const response = await getTransaction()
+setTransactions(response);
 const uniqueCategory: string[] = Array.from(
   new Set(response.map((transaction: Itransaction) => transaction.category))
 );
@@ -74,6 +78,40 @@ setCategories(uniqueCategory)
     }
   };
 
+
+   const handleExportPDF = () => {
+     const doc = new jsPDF();
+
+     doc.setFontSize(18);
+     doc.text("Transaction Summary", 20, 20);
+
+     doc.setFontSize(12);
+     let yOffset = 30;
+     doc.text("Type", 20, yOffset);
+     doc.text("Amount", 50, yOffset);
+     doc.text("Category", 80, yOffset);
+     doc.text("Date", 110, yOffset);
+     doc.text("Description", 140, yOffset);
+
+     transactions.forEach((transaction, index) => {
+       yOffset += 10;
+       doc.text(transaction.type, 20, yOffset);
+       doc.text(transaction.amount.toString(), 50, yOffset);
+       doc.text(transaction.category, 80, yOffset);
+       doc.text(
+         transaction.date
+           ? new Date(transaction.date).toLocaleDateString()
+           : "",
+         110,
+         yOffset
+       );
+       doc.text(transaction.description || "", 140, yOffset);
+     });
+
+     doc.save("Transaction_Summary.pdf");
+   };
+
+
   const handleSubmit = async () => {
     const transactionData = {
       type,
@@ -92,11 +130,13 @@ setCategories(uniqueCategory)
     <div>
       <div className="flex-1 p-6">
         <header className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold">DashBoard</h2>
+          <h2 className="text-2xl font-bold">{title}</h2>
           <div className="flex gap-2">
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="primary" onClick={handleAddTransaction}>+ Add Transaction</Button>
+                <Button variant="primary" onClick={handleAddTransaction}>
+                  + Add Transaction
+                </Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
@@ -254,7 +294,11 @@ setCategories(uniqueCategory)
                 </DialogClose> */}
               </DialogContent>
             </Dialog>
-            <Button variant="secondary" className="flex items-center gap-2">
+            <Button
+              onClick={handleExportPDF}
+              variant="secondary"
+              className="flex items-center gap-2"
+            >
               <FileDown />
               Export
             </Button>

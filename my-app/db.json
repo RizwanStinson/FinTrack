@@ -34,62 +34,96 @@
       "email": "l",
       "password": "l",
       "userId": "e278d0b5-29c5-40bd-bdbd-9a449fc249aa"
+    },
+    {
+      "id": "db6b",
+      "userName": "Rizwan",
+      "email": "r.fahim77@gmail.com",
+      "password": "123",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
     }
   ],
   "details": [
     {
-      "id": "ab56",
+      "id": "2ecc",
       "type": "income",
-      "amount": 300,
-      "category": "Freelance",
-      "date": "2024-11-14T18:00:00.000Z",
-      "description": "Check",
-      "userId": "0a67324e-aec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "31df",
-      "type": "income",
-      "amount": 500,
-      "category": "Investment",
-      "date": "2024-11-20T18:00:00.000Z",
-      "description": "ad",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "e023",
-      "type": "income",
-      "amount": 100,
-      "category": "Salary",
-      "date": "2024-11-12T18:00:00.000Z",
-      "description": ";",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "fa04",
-      "type": "expense",
-      "amount": 58,
-      "category": "Rizwan",
-      "date": "2024-11-28T18:00:00.000Z",
-      "description": "e",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "c458",
-      "type": "income",
-      "amount": 98,
-      "category": "Rizwan",
-      "date": "2024-11-21T18:00:00.000Z",
-      "description": "ok",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "7e9a",
-      "type": "expense",
-      "amount": 34,
-      "category": "Rizwan",
+      "amount": 1100,
+      "category": "Consulting",
       "date": "2024-11-07T18:00:00.000Z",
-      "description": "e",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+      "description": "Training",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "7909",
+      "type": "income",
+      "amount": 2400,
+      "category": "Profit",
+      "date": "2024-11-14T18:00:00.000Z",
+      "description": "Investment",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "79ed",
+      "type": "expense",
+      "amount": 240,
+      "category": "Snacks",
+      "date": "2024-11-15T18:00:00.000Z",
+      "description": "Burger",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "275d",
+      "type": "expense",
+      "amount": 240,
+      "category": "Hangout",
+      "date": "2024-11-11T18:00:00.000Z",
+      "description": "School Friends",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "56fe",
+      "type": "income",
+      "amount": 510,
+      "category": "Stock",
+      "date": "2024-11-07T18:00:00.000Z",
+      "description": "Side Hustle",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "e64e",
+      "type": "expense",
+      "amount": 25,
+      "category": "Daily Commute",
+      "date": "2024-11-03T18:00:00.000Z",
+      "description": "Office",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "f772",
+      "type": "income",
+      "amount": 90,
+      "category": "Profit",
+      "date": "2024-12-19T18:00:00.000Z",
+      "description": "Check",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "15bb",
+      "type": "expense",
+      "amount": 50,
+      "category": "Daily Commute",
+      "date": "2024-11-14T18:00:00.000Z",
+      "description": "Metro",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "b958",
+      "type": "expense",
+      "amount": 900,
+      "category": "Social Event",
+      "date": "2024-11-21T18:00:00.000Z",
+      "description": "Wedding Gift",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
     }
   ],
   "budget": [
@@ -127,6 +161,34 @@
       "amount": 8000,
       "monthYear": "November 2024",
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "7b2a",
+      "category": "Hangout",
+      "amount": 500,
+      "monthYear": "November 2024",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "4089",
+      "category": "Consulting",
+      "amount": 5000,
+      "monthYear": "November 2024",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "f336",
+      "category": "Snacks",
+      "amount": 400,
+      "monthYear": "November 2024",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "58ed",
+      "category": "Social Event",
+      "amount": 500,
+      "monthYear": "November 2024",
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
     }
   ],
   "goals": [
@@ -145,7 +207,7 @@
       "targetAmount": 58,
       "startDate": "2024-11-05T18:00:00.000Z",
       "endDate": "2024-11-06T18:00:00.000Z",
-      "savings": 50,
+      "savings": 100,
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
     },
     {
@@ -156,6 +218,42 @@
       "endDate": "2024-11-06T18:00:00.000Z",
       "savings": 8,
       "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+    },
+    {
+      "id": "5f3e",
+      "goalName": "Vacation Savings",
+      "targetAmount": 1000,
+      "startDate": "2024-11-05T18:00:00.000Z",
+      "endDate": "2024-11-21T18:00:00.000Z",
+      "savings": 1200,
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "697b",
+      "goalName": "New Mechanical Keyboard",
+      "targetAmount": 1000,
+      "startDate": "2024-11-05T18:00:00.000Z",
+      "endDate": "2024-11-14T18:00:00.000Z",
+      "savings": 0,
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "e509",
+      "goalName": "SkullCandy Head Phone",
+      "targetAmount": 500,
+      "startDate": "2024-11-17T18:00:00.000Z",
+      "endDate": "2024-11-21T18:00:00.000Z",
+      "savings": 300,
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+    },
+    {
+      "id": "2a7c",
+      "goalName": "SkullCandy HeadPhone",
+      "targetAmount": 500,
+      "startDate": "2024-11-13T18:00:00.000Z",
+      "endDate": "2024-11-10T18:00:00.000Z",
+      "savings": 300,
+      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
     }
   ]
 }

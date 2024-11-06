@@ -16,7 +16,7 @@ export const getTransaction = async() => {
     return response.data
 }
 
-export const updateTransaction = async (transaction:ITran) => {
+export const updateTransaction = async (transaction:any) => {
   const response = await axios.put(
     `http://localhost:3001/details/${transaction.id}`,
     transaction
