@@ -15,7 +15,7 @@ function page({}: Props) {
      };
 
   return (
-    <div className="flex flex-col sm:flex-row h-screen">
+    <div className="flex flex-col sm:flex-row min-h-screen">
       <div className="w-full sm:w-64 h-full bg-gray-100">
         <SideBar />
       </div>

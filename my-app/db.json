@@ -30,19 +30,10 @@
     {
       "id": "be30",
       "type": "expense",
-      "amount": 900,
+      "amount": 700,
       "category": "Outing",
       "date": "2024-11-20T20:07:44.000Z",
       "description": "Vacation Planning",
-      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
-    },
-    {
-      "id": "0085",
-      "type": "expense",
-      "amount": 300,
-      "category": "Shopping",
-      "date": "2024-11-12T20:07:44.000Z",
-      "description": "Shirt",
       "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
     },
     {
@@ -88,6 +79,15 @@
       "category": "Grocery",
       "date": "2024-11-28T20:13:55.448Z",
       "description": "Check",
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
+    },
+    {
+      "id": "a82f",
+      "type": "income",
+      "amount": 200,
+      "category": "Business Profit",
+      "date": "2024-11-28T20:27:37.082Z",
+      "description": "Profit Sharing",
       "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
     }
   ],

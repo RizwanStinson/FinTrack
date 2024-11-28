@@ -122,13 +122,17 @@ export function SearchBar() {
           onChange={(e) =>
             setFilters((prev) => ({ ...prev, category: e.target.value }))
           }
-          className="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm appearance-none"
+          className="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base appearance-none"
         >
-          <option value="all" className="text-sm">
+          <option value="all" className="text-sm sm:text-base">
             All Categories
           </option>
           {categories.map((category) => (
-            <option key={category} value={category} className="text-sm">
+            <option
+              key={category}
+              value={category}
+              className="text-sm sm:text-base"
+            >
               {category}
             </option>
           ))}
