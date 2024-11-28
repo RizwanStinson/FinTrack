@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 
 export const signup = async(formData:ISignup) => {
-    const allUser = await axios.get(`http://localhost:3001/user`);
+    const allUser = await axios.get(`https://fintrack-json.onrender.com/user`);
      const emailExists = allUser.data.some(
        (user: { email: string }) => user.email === formData.email
      );
@@ -15,13 +15,16 @@ export const signup = async(formData:ISignup) => {
        };
      }
     const sendData = {...formData, userId: uuidv4()}
-    const response = await axios.post("http://localhost:3001/user", sendData);
+    const response = await axios.post(
+      "https://fintrack-json.onrender.com/user",
+      sendData
+    );
     return response.data
 }
 
 
 export const login = async (formData: ILogin) => {
-  const response = await axios.get(`http://localhost:3001/user`);
+  const response = await axios.get(`https://fintrack-json.onrender.com/user`);
   const allUser = response.data
   console.log("All User: ", allUser);
   const loggedInUser = allUser.find((user:any) => user.email == formData.email)

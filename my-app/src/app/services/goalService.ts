@@ -6,7 +6,10 @@ import { update } from "lodash";
 export const postGoal = async (goalData: IAddGoal) => {
   const userId = localStorage.getItem("userId");
   const sendData = { ...goalData, userId };
-  const response = await axios.post("http://localhost:3001/goals", sendData);
+  const response = await axios.post(
+    "https://fintrack-json.onrender.com/goals",
+    sendData
+  );
   return response.data;
 };
 
@@ -14,7 +17,7 @@ export const postGoal = async (goalData: IAddGoal) => {
 export const Goals = async () => {
   const userId = localStorage.getItem("userId");
   const response = await axios.get(
-    `http://localhost:3001/goals?userId=${userId}`
+    `https://fintrack-json.onrender.com/goals?userId=${userId}`
   );
   return response.data;
 };
@@ -22,7 +25,7 @@ export const Goals = async () => {
 
 export const updateSavings= async(updatedGoal:IG) => {
     const response = await axios.put(
-      `http://localhost:3001/goals/${updatedGoal.id}`,
+      `https://fintrack-json.onrender.com/goals/${updatedGoal.id}`,
       updatedGoal
     );
     return response.data
