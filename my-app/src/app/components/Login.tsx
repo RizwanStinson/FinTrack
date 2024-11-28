@@ -54,7 +54,7 @@ function Login({}: Props) {
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="text-center pb-2">
           <CardTitle className="text-3xl font-bold text-blue-600">
-            FinTracker
+            Fin_Track
           </CardTitle>
           <p className="text-sm text-gray-500 mt-2">Log in to your account</p>
         </CardHeader>

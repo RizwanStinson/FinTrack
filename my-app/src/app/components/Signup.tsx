@@ -18,7 +18,7 @@ function Signup({}: Props) {
     email: "",
     password: "",
   });
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -64,7 +64,7 @@ function Signup({}: Props) {
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="text-center pb-2">
           <CardTitle className="text-3xl font-bold text-blue-600">
-            FinTracker
+            Fin_Track
           </CardTitle>
           <p className="text-sm text-gray-500 mt-2">Sign up to get started</p>
         </CardHeader>
@@ -116,11 +116,10 @@ function Signup({}: Props) {
             </div>
 
             <Button className="w-full" type="submit">
-                <span className="flex items-center justify-center">
-                  <UserPlus className="mr-2 h-4 w-4" />
-                  Sign Up
-                </span>
-              
+              <span className="flex items-center justify-center">
+                <UserPlus className="mr-2 h-4 w-4" />
+                Sign Up
+              </span>
             </Button>
           </form>
 
