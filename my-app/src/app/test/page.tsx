@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 
 const TransactionsPage = () => {
-  // Sample transaction data
   const transactions = [
     {
       id: 1,
@@ -57,7 +56,6 @@ const TransactionsPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <div className="bg-white shadow">
         <div className="mx-auto max-w-7xl px-4 py-6">
           <div className="flex justify-between items-center">
@@ -81,14 +79,10 @@ const TransactionsPage = () => {
           </div>
         </div>
       </div>
-
-      {/* Main Content */}
       <div className="mx-auto max-w-7xl px-4 py-6">
-        {/* Search and Filters */}
         <div className="bg-white rounded-lg shadow mb-6">
           <div className="p-4">
             <div className="flex flex-col md:flex-row gap-4">
-              {/* Search */}
               <div className="flex-1">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -99,8 +93,6 @@ const TransactionsPage = () => {
                   />
                 </div>
               </div>
-
-              {/* Filter Dropdowns */}
               <div className="flex gap-4">
                 <div className="relative">
                   <button className="px-4 py-2 border rounded-lg hover:bg-gray-50 flex items-center">
@@ -124,8 +116,6 @@ const TransactionsPage = () => {
             </div>
           </div>
         </div>
-
-        {/* Transactions Table */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
@@ -194,8 +184,6 @@ const TransactionsPage = () => {
               ))}
             </tbody>
           </table>
-
-          {/* Pagination */}
           <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
             <div className="flex-1 flex justify-between sm:hidden">
               <button className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">

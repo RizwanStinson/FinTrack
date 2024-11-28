@@ -1,259 +1,144 @@
 {
   "user": [
     {
-      "id": "9c55",
-      "userName": "a",
-      "email": "b",
-      "password": "c",
-      "userId": "192a3df9-4ffe-4fca-b304-8cc10217a865"
-    },
-    {
-      "id": "76a9",
-      "userName": "a",
-      "email": "b",
-      "password": "d",
-      "userId": "f5e158ed-e304-46f1-8257-0bf9868b62b8"
-    },
-    {
-      "id": "3c4e",
-      "userName": "a",
-      "email": "o",
-      "password": "d",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "a4cc",
-      "userName": "CC",
-      "email": "CC",
-      "password": "CC",
-      "userId": "cc21ea6c-7110-407f-884f-035942073d79"
-    },
-    {
-      "id": "c906",
-      "userName": "Lupsu",
-      "email": "l",
-      "password": "l",
-      "userId": "e278d0b5-29c5-40bd-bdbd-9a449fc249aa"
-    },
-    {
-      "id": "db6b",
+      "id": "9d04",
       "userName": "Rizwan",
       "email": "r.fahim77@gmail.com",
-      "password": "123",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+      "password": "123456",
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
     }
   ],
   "details": [
     {
-      "id": "2ecc",
+      "id": "c2c1",
       "type": "income",
-      "amount": 1100,
-      "category": "Consulting",
-      "date": "2024-11-07T18:00:00.000Z",
-      "description": "Training",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+      "amount": 5000,
+      "category": "Salary",
+      "date": "2024-11-28T20:07:30.253Z",
+      "description": "November Salary",
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
     },
     {
-      "id": "7909",
+      "id": "c3c2",
       "type": "income",
-      "amount": 2400,
-      "category": "Profit",
-      "date": "2024-11-14T18:00:00.000Z",
-      "description": "Investment",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+      "amount": 2000,
+      "category": "Business Profit",
+      "date": "2024-11-29T20:07:44.000Z",
+      "description": "Profit Share",
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
     },
     {
-      "id": "79ed",
-      "type": "expense",
-      "amount": 240,
-      "category": "Snacks",
-      "date": "2024-11-15T18:00:00.000Z",
-      "description": "Burger",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
-    },
-    {
-      "id": "275d",
-      "type": "expense",
-      "amount": 240,
-      "category": "Hangout",
-      "date": "2024-11-11T18:00:00.000Z",
-      "description": "School Friends",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
-    },
-    {
-      "id": "56fe",
-      "type": "income",
-      "amount": 510,
-      "category": "Stock",
-      "date": "2024-11-07T18:00:00.000Z",
-      "description": "Side Hustle",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
-    },
-    {
-      "id": "e64e",
-      "type": "expense",
-      "amount": 25,
-      "category": "Daily Commute",
-      "date": "2024-11-03T18:00:00.000Z",
-      "description": "Office",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
-    },
-    {
-      "id": "f772",
-      "type": "income",
-      "amount": 90,
-      "category": "Profit",
-      "date": "2024-12-19T18:00:00.000Z",
-      "description": "Check",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
-    },
-    {
-      "id": "15bb",
-      "type": "expense",
-      "amount": 50,
-      "category": "Daily Commute",
-      "date": "2024-11-14T18:00:00.000Z",
-      "description": "Metro",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
-    },
-    {
-      "id": "b958",
+      "id": "be30",
       "type": "expense",
       "amount": 900,
-      "category": "Social Event",
-      "date": "2024-11-21T18:00:00.000Z",
-      "description": "Wedding Gift",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+      "category": "Outing",
+      "date": "2024-11-20T20:07:44.000Z",
+      "description": "Vacation Planning",
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
+    },
+    {
+      "id": "0085",
+      "type": "expense",
+      "amount": 300,
+      "category": "Shopping",
+      "date": "2024-11-12T20:07:44.000Z",
+      "description": "Shirt",
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
+    },
+    {
+      "id": "88f2",
+      "type": "income",
+      "amount": 2100,
+      "category": "Stock",
+      "date": "2024-11-12T20:07:44.000Z",
+      "description": "Sell",
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
+    },
+    {
+      "id": "a3b1",
+      "type": "expense",
+      "amount": 1200,
+      "category": "Grocery",
+      "date": "2024-11-07T20:07:44.000Z",
+      "description": "Grocery Shopping",
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
+    },
+    {
+      "id": "805d",
+      "type": "expense",
+      "amount": 500,
+      "category": "Travel",
+      "date": "2024-11-28T20:12:29.111Z",
+      "description": "Back Packing",
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
+    },
+    {
+      "id": "8d97",
+      "type": "expense",
+      "amount": 600,
+      "category": "Shopping",
+      "date": "2024-11-28T20:13:09.304Z",
+      "description": "Trouser",
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
+    },
+    {
+      "id": "b37d",
+      "type": "expense",
+      "amount": 1200,
+      "category": "Grocery",
+      "date": "2024-11-28T20:13:55.448Z",
+      "description": "Check",
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
     }
   ],
   "budget": [
     {
-      "id": "9a0d",
-      "category": "Chicken",
-      "amount": 600,
-      "monthYear": "November 2024",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "9j0d",
-      "category": "Chicken",
-      "amount": 600,
-      "monthYear": "December 2024",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "9p0d",
-      "category": "Rizwan",
+      "id": "ab4a",
+      "category": "Outing",
       "amount": 700,
       "monthYear": "November 2024",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
     },
     {
-      "id": "835b",
-      "category": "Lets See",
-      "amount": 500,
+      "id": "e9f2",
+      "category": "Shopping",
+      "amount": 1500,
       "monthYear": "November 2024",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
     },
     {
-      "id": "d0b0",
-      "category": "Chexk",
-      "amount": 8000,
+      "id": "0d61",
+      "category": "Grocery",
+      "amount": 2000,
       "monthYear": "November 2024",
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
     },
     {
-      "id": "7b2a",
-      "category": "Hangout",
-      "amount": 500,
+      "id": "5f26",
+      "category": "Travel",
+      "amount": 2000,
       "monthYear": "November 2024",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
-    },
-    {
-      "id": "4089",
-      "category": "Consulting",
-      "amount": 5000,
-      "monthYear": "November 2024",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
-    },
-    {
-      "id": "f336",
-      "category": "Snacks",
-      "amount": 400,
-      "monthYear": "November 2024",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
-    },
-    {
-      "id": "58ed",
-      "category": "Social Event",
-      "amount": 500,
-      "monthYear": "November 2024",
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
     }
   ],
   "goals": [
     {
-      "id": "2be4",
-      "goalName": "Okay",
-      "targetAmount": 5000,
-      "startDate": "2024-11-01T18:00:00.000Z",
-      "endDate": "2024-11-14T18:00:00.000Z",
-      "savings": 600,
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "041e",
-      "goalName": "R",
-      "targetAmount": 58,
-      "startDate": "2024-11-05T18:00:00.000Z",
-      "endDate": "2024-11-06T18:00:00.000Z",
-      "savings": 100,
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "453d",
-      "goalName": "i",
-      "targetAmount": 98,
-      "startDate": "2024-11-04T18:00:00.000Z",
-      "endDate": "2024-11-06T18:00:00.000Z",
-      "savings": 8,
-      "userId": "0a67324e-aeec-4402-9a20-fcf570995ad5"
-    },
-    {
-      "id": "5f3e",
-      "goalName": "Vacation Savings",
+      "id": "f5c0",
+      "goalName": "Maldives Tour",
       "targetAmount": 1000,
-      "startDate": "2024-11-05T18:00:00.000Z",
-      "endDate": "2024-11-21T18:00:00.000Z",
-      "savings": 1200,
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
-    },
-    {
-      "id": "697b",
-      "goalName": "New Mechanical Keyboard",
-      "targetAmount": 1000,
-      "startDate": "2024-11-05T18:00:00.000Z",
-      "endDate": "2024-11-14T18:00:00.000Z",
-      "savings": 0,
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
-    },
-    {
-      "id": "e509",
-      "goalName": "SkullCandy Head Phone",
-      "targetAmount": 500,
-      "startDate": "2024-11-17T18:00:00.000Z",
-      "endDate": "2024-11-21T18:00:00.000Z",
+      "startDate": "2024-11-21T18:00:00.000Z",
+      "endDate": "2024-11-29T18:00:00.000Z",
       "savings": 300,
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
     },
     {
-      "id": "2a7c",
-      "goalName": "SkullCandy HeadPhone",
-      "targetAmount": 500,
-      "startDate": "2024-11-13T18:00:00.000Z",
-      "endDate": "2024-11-10T18:00:00.000Z",
-      "savings": 300,
-      "userId": "1eb59cb6-f90c-4bee-a654-6d41242a1f81"
+      "id": "0b21",
+      "goalName": "Concert",
+      "targetAmount": 800,
+      "startDate": "2024-10-31T18:00:00.000Z",
+      "endDate": "2024-11-29T18:00:00.000Z",
+      "savings": 700,
+      "userId": "33b2e4b0-dd7a-4876-a807-7be4fe34d6a2"
     }
   ]
 }

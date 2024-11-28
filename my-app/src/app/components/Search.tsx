@@ -1,19 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { format } from "date-fns";
-import axios from "axios";
-import debounce from "lodash"; 
+import { debounce } from "lodash";
 import { getTransaction } from "../services/transactionService";
 import { startOfWeek, endOfWeek } from "date-fns";
-
 
 export function SearchBar() {
   const [categories, setCategories] = useState<string[]>([]);
@@ -34,7 +23,9 @@ export function SearchBar() {
 
         const uniqueCategories = Array.from(
           new Set(serviceResponse.map((t: any) => t.category))
-        ).filter((category): category is string => typeof category === 'string');
+        ).filter(
+          (category): category is string => typeof category === "string"
+        );
         setCategories(uniqueCategories);
       } catch (error) {
         console.error("Error fetching transactions:", error);
@@ -43,21 +34,22 @@ export function SearchBar() {
 
     fetchData();
   }, []);
-const handleSearchChange = debounce.debounce(
-  (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilters((prevFilters) => ({ ...prevFilters, search: e.target.value }));
-  },
-  300
-);
 
-const isAnyFilterActive = () => {
-  return (
-    filters.search !== "" ||
-    filters.category !== "all" ||
-    filters.dateRange !== "all" ||
-    filters.amount !== "none"
+  const handleSearchChange = debounce(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFilters((prevFilters) => ({ ...prevFilters, search: e.target.value }));
+    },
+    300
   );
-};
+
+  const isAnyFilterActive = () => {
+    return (
+      filters.search !== "" ||
+      filters.category !== "all" ||
+      filters.dateRange !== "all" ||
+      filters.amount !== "none"
+    );
+  };
 
   useEffect(() => {
     const applyFilters = () => {
@@ -89,9 +81,7 @@ const isAnyFilterActive = () => {
           } else if (filters.dateRange === "this_week") {
             const weekStart = startOfWeek(now);
             const weekEnd = endOfWeek(now);
-            return (
-              transactionDate >= weekStart && transactionDate <= weekEnd
-            );
+            return transactionDate >= weekStart && transactionDate <= weekEnd;
           } else if (filters.dateRange === "this_month") {
             return (
               transactionDate.getMonth() === now.getMonth() &&
@@ -101,7 +91,8 @@ const isAnyFilterActive = () => {
             return transactionDate.getFullYear() === now.getFullYear();
           }
           return false;
-        });      }
+        });
+      }
 
       if (filters.amount !== "none") {
         filtered.sort((a, b) =>
@@ -115,118 +106,97 @@ const isAnyFilterActive = () => {
     };
 
     applyFilters();
-
-
   }, [filters, transactions]);
 
   return (
     <div>
-      <div className="flex items-center space-x-4 py-4">
-        <Input
+      <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 py-4">
+        <input
           placeholder="Search transactions..."
-          className="w-full max-w-xs"
+          className="w-full max-w-xs px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={handleSearchChange}
         />
 
-        <Select
+        <select
           value={filters.category}
-          onValueChange={(value) =>
-            setFilters((prev) => ({ ...prev, category: value }))
+          onChange={(e) =>
+            setFilters((prev) => ({ ...prev, category: e.target.value }))
           }
+          className="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm appearance-none"
         >
-          <SelectTrigger className="w-40">
-            <span>
-              {filters.category === "all" ? "Category" : filters.category}
-            </span>
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All</SelectItem>
-            {categories.map((category) => (
-              <SelectItem key={category} value={category}>
-                {category}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-
-        <Select
+          <option value="all" className="text-sm">
+            All Categories
+          </option>
+          {categories.map((category) => (
+            <option key={category} value={category} className="text-sm">
+              {category}
+            </option>
+          ))}
+        </select>
+        <select
           value={filters.dateRange}
-          onValueChange={(value) =>
-            setFilters((prev) => ({ ...prev, dateRange: value }))
+          onChange={(e) =>
+            setFilters((prev) => ({ ...prev, dateRange: e.target.value }))
           }
+          className="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm appearance-none"
         >
-          <SelectTrigger className="w-40">
-            <span>
-              {filters.dateRange === "all"
-                ? "Date Range"
-                : filters.dateRange
-                    .split("_")
-                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                    .join(" ")}
-            </span>
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All</SelectItem>
-            <SelectItem value="today">Today</SelectItem>
-            <SelectItem value="this_week">This Week</SelectItem>
-            <SelectItem value="this_month">This Month</SelectItem>
-            <SelectItem value="this_year">This Year</SelectItem>
-          </SelectContent>
-        </Select>
-
-        <Select
+          <option value="all" className="text-sm">
+            All Dates
+          </option>
+          <option value="today" className="text-sm">
+            Today
+          </option>
+          <option value="this_week" className="text-sm">
+            This Week
+          </option>
+          <option value="this_month">This Month</option>
+          <option value="this_year">This Year</option>
+        </select>
+        <select
           value={filters.amount}
-          onValueChange={(value) =>
-            setFilters((prev) => ({ ...prev, amount: value }))
+          onChange={(e) =>
+            setFilters((prev) => ({ ...prev, amount: e.target.value }))
           }
+          className="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm appearance-none"
         >
-          <SelectTrigger className="w-40">
-            <span>
-              {filters.amount === "none"
-                ? "Amount"
-                : filters.amount.charAt(0).toUpperCase() +
-                  filters.amount.slice(1)}
-            </span>
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="none">None</SelectItem>
-            <SelectItem value="ascending">Ascending</SelectItem>
-            <SelectItem value="descending">Descending</SelectItem>
-          </SelectContent>
-        </Select>
-
-        <Button
-          variant="outline"
-          onClick={() => setFilteredTransactions(filteredTransactions)}
-        >
-          Filter
-        </Button>
+          <option className="text-sm" value="none">
+            Sort by Amount
+          </option>
+          <option value="ascending">Ascending</option>
+          <option value="descending">Descending</option>
+        </select>
       </div>
-      {isAnyFilterActive() && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Transactions</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <table className="w-full text-left">
-              <thead>
-                <tr className="text-gray-500 text-sm">
-                  <th className="px-4 py-2">Date</th>
-                  <th className="px-4 py-2">Description</th>
-                  <th className="px-4 py-2">Category</th>
-                  <th className="px-4 py-2">Amount</th>
+
+      <div>
+        {filteredTransactions.length > 0 ? (
+          <div className="overflow-x-auto border border-gray-300 rounded-md">
+            <table className="w-full text-left border-collapse">
+              <thead className="bg-gray-100 text-gray-700">
+                <tr>
+                  <th className="px-2 sm:px-4 py-2 hidden sm:table-cell">
+                    Date
+                  </th>
+                  <th className="px-2 sm:px-4 py-2">Description</th>
+                  <th className="px-2 sm:px-4 py-2 hidden md:table-cell">
+                    Category
+                  </th>
+                  <th className="px-2 sm:px-4 py-2">Amount</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredTransactions.map((transaction) => (
-                  <tr key={transaction.id} className="border-b">
-                    <td className="px-4 py-2">
+                  <tr key={transaction.id} className="border-t">
+                    <td className="px-2 sm:px-4 py-2 hidden sm:table-cell">
                       {format(new Date(transaction.date), "MMM dd")}
                     </td>
-                    <td className="px-4 py-2">{transaction.description}</td>
-                    <td className="px-4 py-2">{transaction.category}</td>
+                    <td className="px-2 sm:px-4 py-2">
+                      {transaction.description}
+                    </td>
+                    <td className="px-2 sm:px-4 py-2 hidden md:table-cell">
+                      {transaction.category}
+                    </td>
                     <td
-                      className={`px-4 py-2 ${
+                      className={`px-2 sm:px-4 py-2 ${
                         transaction.type === "income"
                           ? "text-green-500"
                           : "text-red-500"
@@ -239,9 +209,11 @@ const isAnyFilterActive = () => {
                 ))}
               </tbody>
             </table>
-          </CardContent>
-        </Card>
-      )}
+          </div>
+        ) : (
+          <p className="text-center text-gray-500">No transactions found.</p>
+        )}
+      </div>
     </div>
   );
 }

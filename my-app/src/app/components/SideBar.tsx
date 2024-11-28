@@ -1,11 +1,11 @@
-import React from 'react'
+"use client";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Target, Home, List, LogOut, PiggyBank } from "lucide-react";
-import { Button } from '@/components/ui/button';
+import { Target, Home, List, LogOut, PiggyBank, Menu, X } from "lucide-react";
 
-type Props = {}
+type Props = {};
 
-function SideBaritem({
+function SideBarItem({
   icon,
   children,
   onClick,
@@ -26,47 +26,85 @@ function SideBaritem({
 }
 
 function SideBar({}: Props) {
-   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
-   const handleLogout = () => {
-     localStorage.removeItem("userId");
-     router.push("/login"); 
-   };
-  return (
-    <div className="w-64 bg-gray-100 p-4 flex flex-col justify-between h-min-screen">
-      <div>
+  const handleLogout = () => {
+    localStorage.removeItem("userId");
+    router.push("/login");
+  };
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const renderSidebarContent = () => (
+    <>
+      <div className="flex justify-between items-center sm:block">
         <h1 className="text-xl font-bold text-blue-600">Finance Tracker</h1>
-        <div className="mt-4 space-y-2">
-          <SideBaritem icon={<Home />} onClick={() => router.push("/landing")}>
-            Dashboard
-          </SideBaritem>
-          <SideBaritem
-            icon={<List />}
-            onClick={() => router.push("/transaction")}
-          >
-            Transactions
-          </SideBaritem>
-          <SideBaritem
-            icon={<PiggyBank />}
-            onClick={() => router.push("/budget")}
-          >
-            Budget
-          </SideBaritem>
-          <SideBaritem icon={<Target />} onClick={() => router.push("/goals")}>
-            Goals
-          </SideBaritem>
-        </div>
+        <button
+          className="sm:hidden text-gray-500 hover:text-gray-700"
+          onClick={toggleSidebar}
+        >
+          <X />
+        </button>
       </div>
-      <Button
-        variant="ghost"
-        className="flex items-center gap-2 text-gray-500"
+      <div className="mt-4 space-y-2">
+        <SideBarItem icon={<Home />} onClick={() => router.push("/landing")}>
+          Dashboard
+        </SideBarItem>
+        <SideBarItem
+          icon={<List />}
+          onClick={() => router.push("/transaction")}
+        >
+          Transactions
+        </SideBarItem>
+        <SideBarItem
+          icon={<PiggyBank />}
+          onClick={() => router.push("/budget")}
+        >
+          Budget
+        </SideBarItem>
+        <SideBarItem icon={<Target />} onClick={() => router.push("/goals")}>
+          Goals
+        </SideBarItem>
+      </div>
+      <button
+        className="flex items-center gap-2 text-gray-500 hover:text-gray-700 p-2 rounded-md focus:outline-none mt-auto"
         onClick={handleLogout}
       >
         <LogOut />
         Logout
-      </Button>
-    </div>
+      </button>
+    </>
+  );
+
+  return (
+    <>
+      {!isOpen && (
+        <button
+          className="sm:hidden fixed top-4 left-4 z-50 text-gray-500 hover:text-gray-700"
+          onClick={toggleSidebar}
+        >
+          <Menu />
+        </button>
+      )}
+      <div className="hidden sm:flex sm:w-64 bg-gray-100 p-4 flex-col justify-between min-h-screen fixed left-0 top-0">
+        {renderSidebarContent()}
+      </div>
+      {isOpen && (
+        <div className="fixed inset-0 z-40 sm:hidden">
+          <div
+            className="absolute inset-0 bg-black opacity-50"
+            onClick={toggleSidebar}
+          ></div>
+          <div className="absolute left-0 top-0 w-64 h-full bg-gray-100 p-4 flex flex-col justify-between">
+            {renderSidebarContent()}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
-export default SideBar
+export default SideBar;

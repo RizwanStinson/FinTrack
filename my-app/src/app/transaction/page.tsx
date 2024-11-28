@@ -15,9 +15,11 @@ function page({}: Props) {
      };
 
   return (
-    <div className="flex">
-      <SideBar />
-      <div className="flex-1 p-6">
+    <div className="flex flex-col sm:flex-row h-screen">
+      <div className="w-full sm:w-64 h-full bg-gray-100">
+        <SideBar />
+      </div>
+      <div className="flex-1 p-4 sm:p-6 ">
         <NavBar
           onTransactionUpdate={handleTransactionUpdate}
           title="Transactions"

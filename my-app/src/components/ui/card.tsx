@@ -41,7 +41,7 @@ export function CardHeader({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <div className={`border-b pb-2 mb-4 ${className}`}>{children}</div>;
+  return <div className={`pb-2 mb-2 ${className}`}>{children}</div>;
 }
 
 export function CardTitle({

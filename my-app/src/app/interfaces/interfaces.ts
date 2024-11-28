@@ -14,7 +14,7 @@ export interface Itransaction {
     type: string,
     amount: number,
     category: string,
-    date:Date | null,
+    date:Date,
     description: string
 }
 

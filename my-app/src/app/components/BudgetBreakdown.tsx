@@ -8,15 +8,27 @@ import { registerables } from "chart.js";
 
 Chart.register(...registerables);
 
-const BudgetBreakdown = () => {
-  const monthlyBudgets = [
-    { category: "Housing", spent: 1800, color: "#4F46E5" },
-    { category: "Food", spent: 450, color: "#10B981" },
-    { category: "Transportation", spent: 380, color: "#F59E0B" },
-    { category: "Entertainment", spent: 275, color: "#EC4899" },
-    { category: "Shopping", spent: 425, color: "#8B5CF6" },
-    { category: "Utilities", spent: 180, color: "#3B82F6" },
-  ];
+interface BudgetBreakdownProps {
+  monthlyBudgets: {
+    category: string;
+    spent: number;
+    color: string;
+  }[];
+}
+
+const BudgetBreakdown: React.FC<BudgetBreakdownProps> = ({
+  monthlyBudgets,
+}) => {
+  if (monthlyBudgets.length === 0) {
+    return (
+      <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 text-center">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          Category Breakdown
+        </h2>
+        <p className="text-gray-500">No budget data available</p>
+      </div>
+    );
+  }
 
   const data = {
     labels: monthlyBudgets.map((b) => b.category),
@@ -28,15 +40,28 @@ const BudgetBreakdown = () => {
     ],
   };
 
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "bottom" as const,
+        labels: {
+          boxWidth: 20,
+          usePointStyle: true,
+          pointStyle: "circle",
+        },
+      },
+    },
+  };
+
   return (
-    <div className="bg-white p-6 rounded-lg shadow">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold text-gray-900">
-          Category Breakdown
-        </h2>
-      </div>
-      <div className="h-64">
-        <Pie data={data} />
+    <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+      <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        Category Breakdown
+      </h2>
+      <div className="w-full h-64 sm:h-80">
+        <Pie data={data} options={options} />
       </div>
     </div>
   );

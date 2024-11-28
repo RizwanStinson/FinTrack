@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Pencil, Archive, ArrowRight, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Goals, updateSavings } from "../services/goalService";
 import { isBefore, isAfter } from "date-fns";
 import { IG } from "../interfaces/interfaces";
@@ -38,8 +36,6 @@ export const GoalsActive = ({ transactionUpdated }: RefreshProps) => {
     fetchGoals();
   }, [transactionUpdated]);
 
-  console.log("Active Goals: ", ActiveGoalsAll);
-
   const handleAddSavings = (goal: IG) => {
     setGoalToUpdate(goal);
     setShowModal(true);
@@ -68,16 +64,15 @@ export const GoalsActive = ({ transactionUpdated }: RefreshProps) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow">
-      <div className="p-6 border-b border-gray-200">
-        <div className="flex justify-between items-center">
-          <h2 className="text-lg font-semibold text-gray-900">Active Goals</h2>
-        </div>
+    <div className="bg-white rounded-lg shadow w-full">
+      <div className="p-4 sm:p-6 border-b border-gray-200">
+        <h2 className="text-base sm:text-lg font-semibold text-gray-900">
+          Active Goals
+        </h2>
       </div>
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
         {ActiveGoalsAll.length > 0 ? (
           ActiveGoalsAll.map((goal) => {
-            // const progress = (goal.savings / goal.targetAmount) * 100;
             const progress = Math.min(
               (goal.savings / goal.targetAmount) * 100,
               100
@@ -90,30 +85,30 @@ export const GoalsActive = ({ transactionUpdated }: RefreshProps) => {
             return (
               <div
                 key={goal.id}
-                className="bg-white border rounded-lg p-6 hover:shadow-md transition-shadow"
+                className="bg-white border rounded-lg p-4 sm:p-6 hover:shadow-md transition-shadow"
               >
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">
+                <div className="flex flex-col sm:flex-row justify-between items-start mb-4 space-y-2 sm:space-y-0">
+                  <div className="flex-grow">
+                    <h3 className="text-base sm:text-lg font-semibold">
                       {goal.goalName}
                     </h3>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-xs sm:text-sm text-gray-500">
                       Target Date:{" "}
                       {goal.endDate
                         ? new Date(goal.endDate).toLocaleDateString()
                         : "N/A"}
                     </p>
                   </div>
-                  <div className="text-blue-500 text-sm font-medium">
+                  <div className="text-blue-500 font-medium text-sm sm:text-base">
                     ${goal.targetAmount.toFixed(2)}
                   </div>
                 </div>
-                <div className="mb-4">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm font-medium text-gray-500">
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-xs sm:text-sm text-gray-500">
                       Progress
                     </span>
-                    <span className="text-sm font-medium text-gray-900">
+                    <span className="text-xs sm:text-sm">
                       {progress.toFixed(1)}%
                     </span>
                   </div>
@@ -125,57 +120,56 @@ export const GoalsActive = ({ transactionUpdated }: RefreshProps) => {
                       style={{ width: `${progress}%` }}
                     />
                   </div>
-                  <div className="mt-2 text-sm font-medium text-gray-500">
+                  <div className="mt-2 text-xs sm:text-sm">
                     Savings: ${goal.savings.toFixed(2)}
                   </div>
                   {exceededAmount > 0 && (
-                    <div className="mt-1 text-sm text-red-500">
+                    <div className="mt-1 text-xs sm:text-sm text-red-500">
                       Exceeded by: ${exceededAmount.toFixed(2)}
                     </div>
                   )}
                 </div>
-                <Button
-                  variant="ghost"
-                  className="w-full mt-4 flex items-center justify-center"
+                <button
                   onClick={() => handleAddSavings(goal)}
+                  className="mt-4 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 text-sm sm:text-base"
                 >
                   Add Savings
-                </Button>
+                </button>
               </div>
             );
           })
         ) : (
-          <p>No active goals at the moment.</p>
+          <p className="text-sm sm:text-base text-center">
+            No active goals at the moment.
+          </p>
         )}
       </div>
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-md max-w-sm w-full">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md w-full max-w-sm">
+            <h3 className="text-base sm:text-lg font-semibold mb-4">
               Add Savings
             </h3>
             <input
               type="number"
               value={amountToAdd}
               onChange={(e) => setAmountToAdd(Number(e.target.value))}
-              className="border p-2 rounded w-full mb-4"
+              className="w-full border p-2 rounded mb-4 text-sm sm:text-base"
               placeholder="Enter amount"
             />
-            <div className="flex justify-between">
-              <Button
-                variant="outline"
-                className="w-1/2"
+            <div className="flex justify-end space-x-2 sm:space-x-4">
+              <button
                 onClick={() => setShowModal(false)}
+                className="text-xs sm:text-sm text-gray-600 hover:underline"
               >
                 Cancel
-              </Button>
-              <Button
-                variant="primary"
-                className="w-1/2"
+              </button>
+              <button
                 onClick={handleSaveSavings}
+                className="bg-blue-500 text-white px-3 sm:px-4 py-2 rounded hover:bg-blue-600 text-xs sm:text-sm"
               >
                 Save
-              </Button>
+              </button>
             </div>
           </div>
         </div>
