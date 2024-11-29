@@ -136,17 +136,21 @@ export function SearchBar() {
           }
           className="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm appearance-none"
         >
-          <option value="all" className="text-sm">
+          <option value="all" className="text-sm sm:text-base">
             All Dates
           </option>
-          <option value="today" className="text-sm">
+          <option value="today" className="text-sm sm:text-base">
             Today
           </option>
-          <option value="this_week" className="text-sm">
+          <option value="this_week" className="text-sm sm:text-base">
             This Week
           </option>
-          <option value="this_month">This Month</option>
-          <option value="this_year">This Year</option>
+          <option value="this_month" className="text-sm sm:text-base">
+            This Month
+          </option>
+          <option value="this_year" className="text-sm sm:text-base">
+            This Year
+          </option>
         </select>
         <select
           value={filters.amount}
@@ -155,11 +159,15 @@ export function SearchBar() {
           }
           className="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm appearance-none"
         >
-          <option className="text-sm" value="none">
+          <option className="text-sm sm:text-base" value="none">
             Sort by Amount
           </option>
-          <option value="ascending">Ascending</option>
-          <option value="descending">Descending</option>
+          <option value="ascending" className="text-sm sm:text-base">
+            Ascending
+          </option>
+          <option value="descending" className="text-sm sm:text-base">
+            Descending
+          </option>
         </select>
       </div>
 
