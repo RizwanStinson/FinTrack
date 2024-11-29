@@ -102,7 +102,6 @@ After successful login, you'll land on the **Dashboard** for a personalized expe
 | Technology | Purpose |
 |------------|---------|
 | **Next.js** | Frontend framework |
-| **Node.js** | Backend for server-side operations |
 | **TypeScript** | Strongly typed JavaScript |
 | **Redux** | State management |
 | **JSON Server** | Mock backend for API testing |
