@@ -24,8 +24,8 @@ Fin Track is your one-stop financial management platform, designed to simplify y
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/fin-track.git
-   cd fin-track
+   git clone https://github.com/your-username/FinTrack.git
+   cd FinTrack
    cd my-app
    npm install
    npm run dev
