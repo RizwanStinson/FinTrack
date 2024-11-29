@@ -11,7 +11,7 @@ export const GoalsActive = ({ transactionUpdated }: RefreshProps) => {
   const [ActiveGoalsAll, setActiveGoalsAll] = useState<IG[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [goalToUpdate, setGoalToUpdate] = useState<IG | null>(null);
-  const [amountToAdd, setAmountToAdd] = useState<number>(0);
+  const [amountToAdd, setAmountToAdd] = useState<number>(0); 
 
   useEffect(() => {
     const fetchGoals = async () => {
@@ -45,7 +45,7 @@ export const GoalsActive = ({ transactionUpdated }: RefreshProps) => {
     if (goalToUpdate) {
       const updatedGoal = {
         ...goalToUpdate,
-        savings: goalToUpdate.savings + amountToAdd,
+        savings: goalToUpdate.savings + (amountToAdd || 0),
       };
 
       await updateSavings(updatedGoal);
@@ -53,7 +53,7 @@ export const GoalsActive = ({ transactionUpdated }: RefreshProps) => {
       setActiveGoalsAll((prevGoals) =>
         prevGoals.map((goal) =>
           goal.id === goalToUpdate.id
-            ? { ...goal, savings: goalToUpdate.savings + amountToAdd }
+            ? { ...goal, savings: updatedGoal.savings }
             : goal
         )
       );
@@ -152,8 +152,8 @@ export const GoalsActive = ({ transactionUpdated }: RefreshProps) => {
             </h3>
             <input
               type="number"
-              value={amountToAdd}
-              onChange={(e) => setAmountToAdd(Number(e.target.value))}
+              value={amountToAdd || ""}
+              onChange={(e) => setAmountToAdd(Number(e.target.value) || 0)}
               className="w-full border p-2 rounded mb-4 text-sm sm:text-base"
               placeholder="Enter amount"
             />
