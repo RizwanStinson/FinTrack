@@ -21,7 +21,7 @@ const GoalsNavBar = ({ onTransactionUpdate }: NavBarProps) => {
       targetAmount: parseFloat(targetAmount),
       startDate,
       endDate,
-      savings: parseFloat(savings),
+      savings: parseFloat(savings) || 0,
     };
     const response = await postGoal(goalData);
     if (response) {
