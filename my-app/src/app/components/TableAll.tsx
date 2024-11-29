@@ -5,7 +5,7 @@ import {
   getTransaction,
   updateTransaction,
 } from "../services/transactionService";
-import { Itransaction } from "../interfaces/interfaces";
+import { ITTest } from "../interfaces/interfaces";
 
 interface RefreshProps {
   transactionUpdated: boolean;
@@ -14,7 +14,7 @@ interface RefreshProps {
 export function TableAll({ transactionUpdated }: RefreshProps) {
   const [transactions, setTransactions] = useState([]);
   const [selectedTransaction, setSelectedTransaction] =
-    useState<Itransaction | null>(null);
+    useState<ITTest | null>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
   useEffect(() => {
@@ -24,9 +24,10 @@ export function TableAll({ transactionUpdated }: RefreshProps) {
   const fetchTransactions = async () => {
     const serviceResponse = await getTransaction();
     setTransactions(serviceResponse);
+    console.log("Transactions:", transactions)
   };
 
-  const handleEditClick = (transaction: Itransaction) => {
+  const handleEditClick = (transaction: ITTest) => {
     setSelectedTransaction(transaction);
     setIsEditDialogOpen(true);
   };
@@ -79,7 +80,7 @@ export function TableAll({ transactionUpdated }: RefreshProps) {
             </tr>
           </thead>
           <tbody>
-            {transactions.map((transaction: any) => (
+            {transactions.map((transaction: ITTest) => (
               <tr key={transaction.id} className="border-t">
                 <td className="px-2 sm:px-4 py-2 hidden sm:table-cell">
                   {format(new Date(transaction.date), "MMM dd")}

@@ -11,8 +11,6 @@ export const BudgetOverview = () => {
   const [totalBudget, setTotalBudget] = useState<number>(0);
   const [totalSpent, setTotalSpent] = useState<number>(0);
   const [remaining, setRemaining] = useState<number>(0);
-  const [uniqueCategories, setUniqueCategories] = useState<string[]>([]);
-  const [matchingCategories, setMatchingCategories] = useState<string[]>([]);
   const dispatch = useDispatch();
 
   const categories = useSelector(
@@ -35,7 +33,6 @@ export const BudgetOverview = () => {
         matchedBudget.map((item: IB) => item.category)
       );
       const uniqueCategoriesArray: string[] = Array.from(categoriesSet) as string[];
-      setUniqueCategories(uniqueCategoriesArray);
 
       const amountSum = matchedBudget.reduce(
         (sum: number, item: IB) => sum + item.amount,
@@ -46,7 +43,6 @@ export const BudgetOverview = () => {
       const matching: string[] = uniqueCategoriesArray.filter((cat) =>
         categories.includes(cat)
       );
-      setMatchingCategories(matching);
 
       const expenseTransaction = await getExpenseTransaction();
       const filteredExpenses = expenseTransaction.filter((expense: ITran) =>

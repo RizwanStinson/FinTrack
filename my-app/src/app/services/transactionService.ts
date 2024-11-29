@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ITran, Itransaction } from "../interfaces/interfaces";
+import { Itransaction, ITTest } from "../interfaces/interfaces";
 
 
 export const transaction = async (transactionData: Itransaction) => {
@@ -21,7 +21,7 @@ export const getTransaction = async() => {
     return response.data
 }
 
-export const updateTransaction = async (transaction:any) => {
+export const updateTransaction = async (transaction:ITTest) => {
   const response = await axios.put(
     `https://fintrack-json.onrender.com/details/${transaction.id}`,
     transaction

@@ -1,7 +1,5 @@
 import axios from "axios";
 import { IAddGoal, IG } from "../interfaces/interfaces";
-import { update } from "lodash";
-
 
 export const postGoal = async (goalData: IAddGoal) => {
   const userId = localStorage.getItem("userId");

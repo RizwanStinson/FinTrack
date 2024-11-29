@@ -5,7 +5,6 @@ import {
   Download,
   Search,
   ChevronDown,
-  MoreVertical,
   Edit,
   Trash,
 } from "lucide-react";

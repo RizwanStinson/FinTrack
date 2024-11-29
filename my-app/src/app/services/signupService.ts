@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ILogin, ISignup } from "../interfaces/interfaces";
+import { ILogin, ISignup, IUser } from "../interfaces/interfaces";
 import { v4 as uuidv4 } from "uuid";
 
 
@@ -27,7 +27,7 @@ export const login = async (formData: ILogin) => {
   const response = await axios.get(`https://fintrack-json.onrender.com/user`);
   const allUser = response.data
   console.log("All User: ", allUser);
-  const loggedInUser = allUser.find((user:any) => user.email == formData.email)
+  const loggedInUser = allUser.find((user:IUser) => user.email == formData.email)
    if (!loggedInUser) {
      return { message: "Email does not exist. Please sign up first." };
    }

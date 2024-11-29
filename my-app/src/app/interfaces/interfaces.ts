@@ -4,10 +4,29 @@ export interface ISignup {
     password: string
 }
 
+export interface IUser {
+  id: string;
+  userName: string;
+  email: string;
+  password: string;
+  userId: string;
+}
+
+
 export interface ILogin {
   email: string;
   password: string;
 }
+
+export interface ITTest {
+  amount: number;
+  category: string;
+  date: string; 
+  description: string;
+  id: string;
+  type: "income" | "expense"; 
+  userId: string;
+};
 
 
 export interface Itransaction {
@@ -25,6 +44,16 @@ export interface ITran {
   category: string;
   date: Date | null;
   description: string;
+}
+
+export interface IT {
+  id: string;
+  type: string;
+  amount: number;
+  category: string;
+  date: Date | null;
+  description: string;
+  userId:string;
 }
 
 

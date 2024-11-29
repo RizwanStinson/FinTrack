@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTransaction } from "../services/transactionService";
 import { format } from "date-fns";
+import { ITTest } from "../interfaces/interfaces";
 
 interface DashBoardSummaryProps {
   transactionUpdated: boolean;
@@ -37,7 +38,7 @@ export function TransactionTable({
           </tr>
         </thead>
         <tbody>
-          {transactions.map((transaction: any) => (
+          {transactions.map((transaction: ITTest) => (
             <tr key={transaction.id} className="border-b">
               <td className="px-2 sm:px-4 py-2 hidden sm:table-cell">
                 {format(new Date(transaction.date), "MMM dd")}

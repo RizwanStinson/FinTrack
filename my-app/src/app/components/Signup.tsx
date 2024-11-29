@@ -10,7 +10,7 @@ import { UserPlus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 
-type Props = {};
+type Props = object;
 function Signup({}: Props) {
   const router = useRouter();
   const [formData, setFormData] = useState<ISignup>({

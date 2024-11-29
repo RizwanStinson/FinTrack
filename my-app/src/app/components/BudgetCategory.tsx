@@ -4,6 +4,7 @@ import { getBudget } from "../services/budgetService";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import BudgetBreakdown from "./BudgetBreakdown";
+import { IB } from "../interfaces/interfaces";
 
 interface BudgetCategoryProps {
   category: string;
@@ -26,17 +27,17 @@ export const BudgetCategory: React.FC = () => {
       const allBudget = await getBudget();
 
       const topBudgets = allBudget
-        .sort((a: any, b: any) => b.amount - a.amount)
+        .sort((a: IB, b: IB) => b.amount - a.amount)
         .slice(0, 10);
 
-      const formattedBudgets = topBudgets.map((item: any, index: number) => ({
+      const formattedBudgets = topBudgets.map((item: IB, index: number) => ({
         category: item.category,
         budget: item.amount,
         spent: 0,
         color: getColorByIndex(index),
       }));
 
-      const updatedBudgets = formattedBudgets.map((budgetCategory: any) => {
+      const updatedBudgets = formattedBudgets.map((budgetCategory: IB) => {
         const totalSpentForCategory = filteredExpenses
           .filter((expense: { category: string }) => expense.category === budgetCategory.category)          .reduce((sum, expense) => sum + expense.amount, 0);
 

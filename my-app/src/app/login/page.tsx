@@ -1,9 +1,9 @@
 import React from 'react'
 import Login from '../components/Login'
 
-type Props = {}
+type Props = object;
 
-function page({}: Props) {
+function Page({}: Props) {
   return (
     <div>
         <Login />
@@ -11,4 +11,4 @@ function page({}: Props) {
   )
 }
 
-export default page
+export default Page

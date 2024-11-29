@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Target, Home, List, LogOut, PiggyBank, Menu, X } from "lucide-react";
 
-type Props = {};
+type Props = object;
 
 function SideBarItem({
   icon,

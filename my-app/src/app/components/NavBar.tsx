@@ -64,7 +64,7 @@ function NavBar({ onTransactionUpdate, title }: NavBarProps) {
     doc.text("Date", 110, yOffset);
     doc.text("Description", 140, yOffset);
 
-    transactions.forEach((transaction, index) => {
+    transactions.forEach((transaction) => {
       yOffset += 10;
       doc.text(transaction.type, 20, yOffset);
       doc.text(transaction.amount.toString(), 50, yOffset);

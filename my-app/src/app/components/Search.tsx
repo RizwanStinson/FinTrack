@@ -3,11 +3,12 @@ import { format } from "date-fns";
 import { debounce } from "lodash";
 import { getTransaction } from "../services/transactionService";
 import { startOfWeek, endOfWeek } from "date-fns";
+import { ITTest } from "../interfaces/interfaces";
 
 export function SearchBar() {
   const [categories, setCategories] = useState<string[]>([]);
-  const [transactions, setTransactions] = useState<any[]>([]);
-  const [filteredTransactions, setFilteredTransactions] = useState<any[]>([]);
+  const [transactions, setTransactions] = useState<ITTest[]>([]);
+  const [filteredTransactions, setFilteredTransactions] = useState<ITTest[]>([]);
   const [filters, setFilters] = useState({
     search: "",
     category: "all",
@@ -22,7 +23,7 @@ export function SearchBar() {
         setTransactions(serviceResponse);
 
         const uniqueCategories = Array.from(
-          new Set(serviceResponse.map((t: any) => t.category))
+          new Set(serviceResponse.map((t: ITTest) => t.category))
         ).filter(
           (category): category is string => typeof category === "string"
         );
@@ -41,16 +42,7 @@ export function SearchBar() {
     },
     300
   );
-
-  const isAnyFilterActive = () => {
-    return (
-      filters.search !== "" ||
-      filters.category !== "all" ||
-      filters.dateRange !== "all" ||
-      filters.amount !== "none"
-    );
-  };
-
+  
   useEffect(() => {
     const applyFilters = () => {
       let filtered = [...transactions];

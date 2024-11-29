@@ -8,8 +8,6 @@ import { BudgetCategory } from "../components/BudgetCategory";
 import SideBar from "../components/SideBar";
 
 const BudgetPage = () => {
-  const defaultMonthlyBudgets = [{ category: "", spent: 0, color: "#000000" }];
-
   return (
     <Provider store={store}>
       <div className="flex flex-col sm:flex-row min-h-screen bg-gray-50">

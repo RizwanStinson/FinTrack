@@ -5,9 +5,9 @@ import DashBoardSummary from "../components/DashBoardSummary";
 import { TransactionTable } from "../components/TransactionTable";
 import NavBar from "../components/NavBar";
 
-type Props = {};
+type Props = object;
 
-function page({}: Props) {
+function Page({}: Props) {
   const [transactionUpdated, setTransactionUpdated] = useState(false);
 
   const handleTransactionUpdate = () => {
@@ -31,4 +31,4 @@ function page({}: Props) {
   );
 }
 
-export default page;
+export default Page;

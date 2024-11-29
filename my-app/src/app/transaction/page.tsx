@@ -5,9 +5,9 @@ import NavBar from "../components/NavBar";
 import { SearchBar } from "../components/Search";
 import { TableAll } from "../components/TableAll";
 
-type Props = {};
+type Props = object;
 
-function page({}: Props) {
+function Page({}: Props) {
      const [transactionUpdated, setTransactionUpdated] = useState(false);
 
      const handleTransactionUpdate = () => {
@@ -30,4 +30,4 @@ function page({}: Props) {
     </div>
   );}
 
-export default page;
+export default Page;

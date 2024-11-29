@@ -2,7 +2,7 @@
 import React from 'react'
 import Signup from './components/Signup'
 
-type Props = {}
+type Props = object;
 
 function page({}: Props) {
   return (

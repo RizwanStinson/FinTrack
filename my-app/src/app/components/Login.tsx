@@ -8,9 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import toast, { Toaster } from "react-hot-toast";
+import Link from "next/link";
 
-type Props = {};
-function Login({}: Props) {
+
+function Login() {
   const router = useRouter();
   const [formData, setFormData] = useState<ILogin>({
     email: "",
@@ -90,14 +91,6 @@ function Login({}: Props) {
                 placeholder="Enter your password"
                 className="w-full"
               />
-              <div className="text-right">
-                <a
-                  href="/forgot-password"
-                  className="text-xs text-blue-600 hover:underline"
-                >
-                  Forgot password?
-                </a>
-              </div>
             </div>
 
             <Button type="submit" className="w-full" disabled={isLoading}>
@@ -106,10 +99,13 @@ function Login({}: Props) {
           </form>
 
           <div className="mt-6 text-center text-sm text-gray-500">
-            Don't have an account?{" "}
-            <a href="/" className="text-blue-600 hover:underline font-semibold">
+            Don&apos;t have an account?{" "}
+            <Link
+              href="/"
+              className="text-blue-600 hover:underline font-semibold"
+            >
               Sign up
-            </a>
+            </Link>
           </div>
         </CardContent>
       </Card>

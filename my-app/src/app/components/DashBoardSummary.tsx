@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getTransaction } from "../services/transactionService";
-import { Itransaction } from "../interfaces/interfaces";
+import { Itransaction, ITTest } from "../interfaces/interfaces";
 import { isSameMonth, parseISO } from "date-fns";
 
 interface SummaryCardProps {
@@ -36,9 +36,10 @@ function DashBoardSummary({ transactionUpdated }: DashBoardSummaryProps) {
   useEffect(() => {
     const fetchTransaction = async () => {
       const serviceResponse = await getTransaction();
+      console.log("ServiceResponse: ", serviceResponse)
       const currentDate = new Date();
 
-      const currentMonthTransactions = serviceResponse.filter((item: any) =>
+      const currentMonthTransactions = serviceResponse.filter((item: ITTest) =>
         isSameMonth(parseISO(item.date), currentDate)
       );
 

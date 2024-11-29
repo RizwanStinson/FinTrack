@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Plus, Settings } from "lucide-react";
+import { Plus } from "lucide-react";
 import { getTransaction } from "../services/transactionService";
 import { Itransaction } from "../interfaces/interfaces";
 import { format } from "date-fns";
