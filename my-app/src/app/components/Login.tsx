@@ -94,7 +94,7 @@ function Login() {
             </div>
 
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Signing In..." : "Log In"}
+              {isLoading ? "Logging In..." : "Log In"}
             </Button>
           </form>
 
